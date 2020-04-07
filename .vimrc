@@ -96,8 +96,13 @@
 " let g:solarized_termcolors=256
 " let g:solarized_termtrans=1
 
+"set cursor positon display
+set ruler
+
+"set change tabs to spaces
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
+
 "prevent line wrapping
-set nowrap
 set textwidth=0
 set wrapmargin=0
 
