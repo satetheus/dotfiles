@@ -90,11 +90,9 @@
 " Or use your leader key + l to toggle on/off
 " map <leader>l :set list!<CR> " Toggle tabs and EOL
 "
-" " Color scheme (terminal)
-" set t_Co=256
-" set background=dark
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans=1
+"prevent creation of backups & swp files, muddles git history
+set nobackup
+set noswapfile
 
 "set cursor positon display
 set ruler
