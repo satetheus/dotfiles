@@ -17,5 +17,5 @@ gcom () {
 }
 
 gcp () {
-    git commit -am "$1" && gpushcurr
+    git commit -am "$1" && gpush
 }
