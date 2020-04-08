@@ -8,10 +8,11 @@ alias cdd='pushd'
 alias b='popd'
 
 alias glog='git log --oneline'
-alias gpushcurr='git rev-parse --abbrev-ref HEAD | xargs git push origin'
 alias gstat='git status --porcelain'
+alias gpush='git rev-parse --abbrev-ref HEAD | xargs git push origin'
+alias gpull='git rev-parse --abbrev-ref HEAD | xargs git pull origin'
 
-gcommit () {
+gcom () {
     git commit -am "$1"
 }
 
