@@ -118,7 +118,16 @@ set t_Co=256
 set background=dark
 colorscheme deus
 
-"macros
+"MACROS:
+"document formatting for markup conversion to confluence table
+let @m="0xi||f dwi||f a_€kb||||||d$j@t"
+let @d="03f|lyt|3f|pj@d"
+let @q='0f1x"nPF|l"nyt|j@i'
+
+"aligns all words after first space at the 40th column
+let @b="0f 40i 40|dwj"
+
+"imports to requirements.txt macros
 let @r=":%s/ \\+\\d\\+: \\+//"
 let @a=":%s/ as .*//"
 let @c=":g/^$/d+2"
