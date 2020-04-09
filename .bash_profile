@@ -19,3 +19,7 @@ gcom () {
 gcp () {
     git commit -am "$1" && gpush
 }
+
+gclone () {
+    git clone https://github.com/$1/$2
+}
