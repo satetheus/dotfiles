@@ -1,5 +1,6 @@
 # Aliases
 
+alias ls='ls -FA'
 alias la='ls -a'
 alias ll='ls -al'
 alias q='exit'
