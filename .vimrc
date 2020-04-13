@@ -30,14 +30,6 @@
 " " Encoding
 " set encoding=utf-8
 "
-" " Whitespace
-" set wrap
-" set textwidth=79
-" set formatoptions=tcqrn1
-" set tabstop=2
-" set shiftwidth=2
-" set softtabstop=2
-" set expandtab
 " set noshiftround
 "
 " " Cursor motion
@@ -63,14 +55,6 @@
 " set showmode
 " set showcmd
 "
-" " Searching
-" nnoremap / /\v
-" vnoremap / /\v
-" set hlsearch
-" set incsearch
-" set ignorecase
-" set smartcase
-" set showmatch
 " map <leader><space> :let @/=''<cr> " clear search
 "
 " " Remap help key.
@@ -107,6 +91,9 @@ set wrapmargin=0
 "relative line numbering
 set nonu
 set rnu
+
+"search options
+set hlsearch
 
 "key remaps
 nnoremap ; :
