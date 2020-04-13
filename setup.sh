@@ -1,7 +1,7 @@
 #! usr/bin/env bash
-ln -s .gitignore_global ~/.gitignore_global
+ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
 # will add .gitconfig later
-ln -s .bashrc ~/.bashrc
-ln -s .bash_aliases ~/.bash_aliases 
-ln -s .vimrc ~/.vimrc
-ln -s deus.vim ~/.vim/deus.vim
+ln -s ~/dotfiles/.bashrc ~/.bashrc
+ln -s ~/dotfiles/.bash_aliases ~/.bash_aliases 
+ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/deus.vim ~/.vim/colors/deus.vim
