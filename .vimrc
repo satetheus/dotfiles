@@ -95,6 +95,10 @@ set rnu
 "search options
 set hlsearch
 
+"easier file search
+nnoremap :vex :Vex
+nnoremap :ex :Ex
+
 "key remaps
 nnoremap ; :
 nnoremap : ;
