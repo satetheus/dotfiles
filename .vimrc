@@ -115,11 +115,8 @@ let @q='0f1x"nPF|l"nyt|j@i'
 let @b="0f 40i 40|dwj"
 
 "imports to requirements.txt macros
-let @r=":%s/ \\+\\d\\+: \\+//"
-let @a=":%s/ as .*//"
-let @c=":g/^$/d+2"
-let @f=":%s/\\vfrom (.*) import .*/import \\1/"
-let @i=":%s/import //"
-let @p=":%s/\\..*//"
-let @t="ggdd@r@a@c@f:g/import \\./d@i@p:sort u"
+"run after grep -r -i --no-filename --include \*.py 'import ' . | vim -
+let @f=":%s/\vfrom (.*) import .*/import \1/"
+let @i=":%s/\vimport (\S*).*/\1/"
+let @p=":%s/\..*//"
 
