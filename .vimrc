@@ -120,7 +120,5 @@ let @b="0f 40i 40|dwj"
 
 "imports to requirements.txt macros
 "run after grep -r -i --no-filename --include \*.py 'import ' . | vim -
-let @f=":%s/\vfrom (.*) import .*/import \1/"
-let @i=":%s/\vimport (\S*).*/\1/"
-let @p=":%s/\..*//"
+let @f=";%s/\\vfrom (.*) import .*/import \\1/;%s/\\vimport (\\S*).*/\\1/;%s/\\..*//;sort u"
 
