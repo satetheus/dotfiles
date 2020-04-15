@@ -12,6 +12,7 @@ alias glog='git log --oneline'
 alias gstat='git status --porcelain'
 alias gpush='git rev-parse --abbrev-ref HEAD | xargs git push origin'
 alias gpull='git rev-parse --abbrev-ref HEAD | xargs git pull origin'
+alias gaddnew='git status --short | grep -v "??" | cut -d " " -f 3 | xargs git add'
 
 gcom () {
     git commit -am "$1"
