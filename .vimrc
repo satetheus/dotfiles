@@ -98,6 +98,7 @@ set hlsearch
 "easier file search
 cabbrev vex Vex
 cabbrev ex Ex
+cabbrev sex Sex
 
 "key remaps
 nnoremap ; :
