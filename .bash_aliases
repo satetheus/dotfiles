@@ -24,3 +24,8 @@ gcp () {
 gclone () {
     git clone https://github.com/$1/$2
 }
+
+pyrex () {
+    grep -i -r --no-filename --include \*.py 'import ' .
+}
+
