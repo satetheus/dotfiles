@@ -27,6 +27,6 @@ gclone () {
 
 pyrex () {
     grep -i -r --no-filename --include \*.py 'import ' .
-    # alternative is: vim <(grep -r -i --include \*.py 'import ' .)
+    # alternative is: vim <(grep -r -i  --no-filenames --include \*.py 'import ' .)
 }
 
