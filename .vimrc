@@ -123,3 +123,7 @@ let @b="0f 40i 40|dwj"
 "run after grep -r -i --no-filename --include \*.py 'import ' . | vim -
 let @f=";%s/\\vfrom (.*) import .*/import \\1/;%s/\\vimport (\\S*).*/\\1/;%s/\\..*//;sort u"
 
+"format downloaded confluence table
+let @j=";v/€üV/-1j!"
+let @t="/€üVxi€üCkkJgg@t"
+let @l=';%s/","/|/g;%s/"/|/g'
