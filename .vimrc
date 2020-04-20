@@ -1,79 +1,3 @@
-" Don't try to be vi compatible
-" set nocompatible
-"
-" " Helps force plugins to load correctly when it is turned back on below
-" filetype off
-"
-" " TODO: Load plugins here (pathogen or vundle)
-"
-" " Turn on syntax highlighting
-" syntax on
-"
-" " For plugins to load correctly
-" filetype plugin indent on
-"
-" " TODO: Pick a leader key
-" " let mapleader = ","
-"
-" " Security
-" set modelines=0
-"
-" " Show line numbers
-" set number
-"
-" " Show file stats
-" set ruler
-"
-" " Blink cursor on error instead of beeping (grr)
-" set visualbell
-"
-" " Encoding
-" set encoding=utf-8
-"
-" set noshiftround
-"
-" " Cursor motion
-" set scrolloff=3
-" set backspace=indent,eol,start
-" set matchpairs+=<:> " use % to jump between pairs
-" runtime! macros/matchit.vim
-"
-" " Move up/down editor lines
-" nnoremap j gj
-" nnoremap k gk
-"
-" " Allow hidden buffers
-" set hidden
-"
-" " Rendering
-" set ttyfast
-"
-" " Status bar
-" set laststatus=2
-"
-" " Last line
-" set showmode
-" set showcmd
-"
-" map <leader><space> :let @/=''<cr> " clear search
-"
-" " Remap help key.
-" inoremap <F1> <ESC>:set invfullscreen<CR>a
-" nnoremap <F1> :set invfullscreen<CR>
-" vnoremap <F1> :set invfullscreen<CR>
-"
-" " Textmate holdouts
-"
-" " Formatting
-" map <leader>q gqip
-"
-" " Visualize tabs and newlines
-" set listchars=tab:Î
-"s to enable by default:
-"" set list " To enable by default
-" Or use your leader key + l to toggle on/off
-" map <leader>l :set list!<CR> " Toggle tabs and EOL
-"
 "prevent creation of backups & swp files, muddles git history
 set nobackup
 set noswapfile
@@ -119,11 +43,7 @@ let @q='0f1x"nPF|l"nyt|j@i'
 "aligns all words after first space at the 40th column
 let @b="0f 40i 40|dwj"
 
-"imports to requirements.txt macros
-"run after grep -r -i --no-filename --include \*.py 'import ' . | vim -
-let @f=";%s/\\vfrom (.*) import .*/import \\1/;%s/\\vimport (\\S*).*/\\1/;%s/\\..*//;sort u"
-
 "format downloaded confluence table
 let @j=";v/€üV/-1j!"
-let @t="/€üVxi€üCkkJgg@t"
+let @t="/€üVxi€üCkkJgg@t"
 let @l=';%s/","/|/g;%s/"/|/g'
