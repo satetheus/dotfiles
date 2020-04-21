@@ -67,4 +67,4 @@ srd () {
     fi
 }
 
-alias fzf='winpty fzf' # VERY DANGER. Will break on all systems besides windows. MUST BE CHANGED ASAP!
+alias fzf='winpty fzf.exe' # VERY DANGER. Will break on all systems besides windows. MUST BE CHANGED ASAP!
