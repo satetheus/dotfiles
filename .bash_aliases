@@ -28,7 +28,10 @@ gclone () {
 }
 
 pyrex () {
-    grep -i -r --no-filename --include \*.py 'import ' . | sed -E 's/from (.*) import .*/import \1/;s/#.*//;s/import (\S*).*/\1/;s/\..*//' | sort -u >> $1
+    grep -i -r --no-filename --include \*.py 'import ' . | \
+    sed -E 's/from (.*) import .*/import \1/;s/#.*//;s/import (\S*).*/\1/;s/\..*//' | \
+    sort -u >> \
+    $1
 }
 
 srp () {
