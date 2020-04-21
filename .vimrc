@@ -1,3 +1,13 @@
+"add automatic install of plugin manager
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+"specify plugin directory
+call plug#begin('~/.vim/plugged')
+
 "prevent creation of backups & swp files, muddles git history
 set nobackup
 set noswapfile
