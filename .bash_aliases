@@ -31,4 +31,12 @@ pyrex () {
     grep -i -r --no-filename --include \*.py 'import ' . | sed -E 's/from (.*) import .*/import \1/;s/#.*//;s/import (\S*).*/\1/;s/\..*//' | sort -u >> $1
 }
 
+srp () {
+    grep -rl "${1}" . | xargs sed -i "s/${1}/${2}/g"
+    #alternate: find /path/to/files -type f -exec sed -i 's/oldstring/new string/g' {} \;
+}
 
+srd () {
+    #TODO: add --include flag to use regex on files to search
+    grep -rl "${1}" . | xargs sed -i "/${1}/d"
+}
