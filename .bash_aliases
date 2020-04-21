@@ -7,6 +7,7 @@ alias q='exit'
 
 alias cdd='pushd'
 alias b='popd'
+alias r='exec bash -l'
 
 alias glog='git log --oneline'
 alias gstat='git status --porcelain'
@@ -27,7 +28,7 @@ gclone () {
 }
 
 pyrex () {
-    grep -i -r --no-filename --include \*.py 'import ' . | sed -E 's/from (.*) import .*/import \1/;s/#.*//;s/import (\S*).*/\1/;s/\..*//' | sort -u
+    grep -i -r --no-filename --include \*.py 'import ' . | sed -E 's/from (.*) import .*/import \1/;s/#.*//;s/import (\S*).*/\1/;s/\..*//' | sort -u >> $1
 }
 
 
