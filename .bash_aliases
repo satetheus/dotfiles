@@ -43,11 +43,26 @@ preqs () {
 }
 
 srp () {
-    grep -rl "${1}" . | xargs sed -i "s/${1}/${2}/g"
-    #alternate: find /path/to/files -type f -exec sed -i 's/oldstring/new string/g' {} \;
+    if [ $# -eq 2 ]
+    then
+        grep -rl "${1}" . | xargs sed -i "s/${1}/${2}/g"
+        #alternate: find /path/to/files -type f -exec sed -i 's/oldstring/new string/g' {} \;
+    fi
+
+    if [ $# -eq 3 ]
+    then
+        grep -rl --include ${3} "${1}" . | xargs sed -i "s/${1}/${2}/g"
+    fi
 }
 
 srd () {
-    #TODO: add --include flag to use regex on files to search
-    grep -rl "${1}" . | xargs sed -i "/${1}/d"
+    if [ $# -eq 1 ]
+    then
+        grep -rl "${1}" . | xargs sed -i "/${1}/d"
+    fi
+
+    if [ $# -eq 2 ]
+    then
+        grep -rl --include ${2} "${1}" . | xargs sed -i "/${1}/d"
+    fi
 }
