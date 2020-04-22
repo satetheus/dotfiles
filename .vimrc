@@ -8,6 +8,9 @@ endif
 "specify plugin directory
 call plug#begin('~/.vim/plugged')
 
+" install fzf for vim
+Plug 'junegunn/fzf'
+
 "prevent creation of backups & swp files, muddles git history
 set nobackup
 set noswapfile
