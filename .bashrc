@@ -139,3 +139,11 @@ set editing-mode vi
 set keymap vi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# VERY DANGER, wsl only
+# get windows user
+win_userprofile="$(cmd.exe /c "<nul set /p=%UserProfile%" 2>/dev/null)"
+win_userprofile_drive="${win_userprofile%%:*}:"
+userprofile_mount="$(findmnt --noheadings --first-only --output TARGET "$win_userprofile_drive")"
+win_userprofile_dir="${win_userprofile#*:}"
+userprofile="${userprofile_mount}${win_userprofile_dir//\\//}"
