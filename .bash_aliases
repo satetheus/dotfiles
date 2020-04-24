@@ -10,6 +10,8 @@ alias b='popd'
 alias r='exec bash -l'
 alias dcs='cd $userprofile/Documents'
 
+alias fig='vim $(fzf --height=40%)'
+
 alias glog='git log --oneline'
   alias golg='glog'
 alias gstat='git status --porcelain'
