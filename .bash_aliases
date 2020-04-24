@@ -8,6 +8,7 @@ alias q='exit'
 alias cdd='pushd'
 alias b='popd'
 alias r='exec bash -l'
+alias dcs='cd $userprofile/Documents'
 
 alias glog='git log --oneline'
   alias golg='glog'
