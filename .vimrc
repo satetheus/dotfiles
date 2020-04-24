@@ -8,7 +8,7 @@ endif
 "specify plugin directory
 call plug#begin('~/.vim/plugged')
 
-" install fzf for vim
+"fuzzy finder
 Plug 'junegunn/fzf'
 
 "prevent creation of backups & swp files, muddles git history
@@ -43,6 +43,8 @@ nnoremap : ;
 
 "themeing
 syntax on
+set term=screen-256color
+set t_ut=
 set t_Co=256
 set background=dark
 colorscheme deus
