@@ -32,6 +32,9 @@ set rnu
 "search options
 set hlsearch
 
+"split settings
+set splitbelow splitright
+
 "easier file search
 cabbrev vex Vex
 cabbrev ex Ex
