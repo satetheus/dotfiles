@@ -32,6 +32,10 @@ set rnu
 "search options
 set hlsearch
 
+"split settings
+set splitbelow splitright
+set fillchars+=vert:\ 
+
 "easier file search
 cabbrev vex Vex
 cabbrev ex Ex
@@ -40,6 +44,11 @@ cabbrev sex Sex
 "key remaps
 nnoremap ; :
 nnoremap : ;
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+map <Leader>tt :vnew term://bash<CR>
 
 "themeing
 syntax on
