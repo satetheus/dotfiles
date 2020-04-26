@@ -43,9 +43,18 @@ gclone () {
 }
 
 g2https () {
+    names="$(git remote -v | awk '{print $1}' | uniq)"
+    urls="$(git remote -v | awk '{print $2}' | uniq)"
 }
 
 g2ssh() {
+    names="$(git remote -v | awk '{print $1}' | uniq)"
+    urls="$(git remote -v | awk '{print $2}' | uniq)"
+    site="$(echo $urls | cut -d'/' -f3)"
+    account="$(echo $urls | cut -d'/' -f4)"
+    repo="$(echo $urls | cut -d'/' -f5 | cut -d'.' -f1)"
+    newurl="git@${site}:${account}/${repo}.git"
+    git remote set-url $names $newurl
 }
 
 preqs () {
