@@ -29,6 +29,10 @@ set wrapmargin=0
 highligh ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
+"show whitespace at end of line
+set listchars=trail:.
+set list
+
 "relative line numbering
 set nonu
 set rnu
