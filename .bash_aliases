@@ -8,7 +8,7 @@ alias q='exit'
 alias cdd='pushd'
 alias b='popd'
 alias r='exec bash -l'
-alias dcs='cd $userprofile/Documents'
+alias dcs='cd /mnt/c/$userprofile/Documents'
 alias dot='cd ~/dotfiles'
 
 alias fig='vim $(fzf --height=40%)'
