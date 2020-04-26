@@ -42,6 +42,12 @@ gclone () {
     git clone https://github.com/$1/$2
 }
 
+g2https () {
+}
+
+g2ssh() {
+}
+
 preqs () {
     grep -i -r --no-filename --include \*.py 'import ' . | \
     sed -E 's/from (.*) import .*/import \1/;s/#.*//;s/import (\S*).*/\1/;s/\..*//' | \
