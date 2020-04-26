@@ -25,6 +25,10 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set textwidth=0
 set wrapmargin=0
 
+"Make 81st column stand out
+highligh ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
+
 "relative line numbering
 set nonu
 set rnu
