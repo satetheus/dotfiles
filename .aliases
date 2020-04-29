@@ -42,6 +42,10 @@ gclone () {
     git clone https://github.com/$1/$2
 }
 
+gsclone () {
+    git clone git@github.com:$1/$2
+}
+
 g2https () {
     names="$(git remote -v | awk '{print $1}' | uniq)"
     urls="$(git remote -v | awk '{print $2}' | uniq)"
