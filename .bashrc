@@ -127,6 +127,10 @@ elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
 fi
 unset env
 
+
+# assure gpg doesn't fail with "inappropriate ioctl for device"
+export GPG_TTY=$(tty)
+
 # set colored git branch display
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
