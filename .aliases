@@ -29,6 +29,7 @@ alias gpull='git rev-parse --abbrev-ref HEAD | xargs git pull origin'
 alias gaddnew='git status --short | grep -v "??" | cut -d " " -f 3 | xargs git add'
   alias gtnew='gaddnew'
   alias gtn='gaddnew'
+alias gd='git diff'
 
 gcom () {
     git commit -am "$1"
