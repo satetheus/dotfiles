@@ -42,6 +42,7 @@ set rnu
 
 "search options
 set hlsearch
+set smartcase
 
 "split settings
 set splitbelow splitright
