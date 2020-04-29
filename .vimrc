@@ -15,6 +15,9 @@ Plug 'junegunn/fzf'
 set nobackup
 set noswapfile
 
+"set utf-8 as the default encoding
+set encoding=utf-8
+
 "set cursor positon display
 set ruler
 
