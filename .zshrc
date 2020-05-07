@@ -20,3 +20,6 @@ vcs_info_wrapper() {
   fi
 }
 RPROMPT=$'$(vcs_info_wrapper)'
+
+# assure gpg doesn't fail with "inappropriate ioctl for device"
+export GPG_TTY=$(tty)
