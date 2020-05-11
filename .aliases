@@ -95,3 +95,9 @@ srd () {
     fi
 }
 
+gfe () {
+    fileToEdit=$(grep -rn ${1} . | fzf | cut -d ':' -f 1-2)
+    fileName=$(echo $fileToEdit | cut -d ':' -f 1)
+    lineNumber=$(echo $fileToEdit | cut -d ':' -f 2)
+    vim +$lineNumber $fileName
+}
