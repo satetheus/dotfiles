@@ -37,7 +37,7 @@ set listchars=trail:.
 set list
 
 "relative line numbering
-set nonu
+set nu
 set rnu
 
 "search options
