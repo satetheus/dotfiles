@@ -7,9 +7,6 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.aliases ~/.aliases
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 
-mkdir ~/.vim ~/.vim/colors
-ln -s ~/dotfiles/deus.vim ~/.vim/colors/deus.vim
-
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
@@ -23,3 +20,6 @@ brew install fzf
 # install fzf plugin for vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# restart zsh
+exec zsh -l

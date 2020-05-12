@@ -11,6 +11,11 @@ call plug#begin('~/.vim/plugged')
 "fuzzy finder
 Plug 'junegunn/fzf'
 
+"colorscheme
+Plug 'ajmwagar/vim-deus'
+
+cal  plug#end()
+
 "prevent creation of backups & swp files, muddles git history
 set nobackup
 set noswapfile
