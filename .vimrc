@@ -34,7 +34,7 @@ set textwidth=0
 set wrapmargin=0
 
 "Make 81st column stand out
-highligh ColorColumn ctermbg=magenta
+highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
 
 "show whitespace at end of line
@@ -47,7 +47,9 @@ set rnu
 
 "search options
 set hlsearch
+set ignorecase
 set smartcase
+set incsearch
 
 "split settings
 set splitbelow splitright
