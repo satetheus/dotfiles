@@ -7,7 +7,13 @@ alias q='exit'
 
 alias cdd='pushd'
 alias b='popd'
-alias r='exec bash -l'
+
+if [ -n "$ZSH_VERSION" ]; then
+  alias r='exec zsh -l'
+elif [ -n "$BASH_VERSION" ]; then
+  alias r='exec bash -l'
+fi
+
 alias dcs='cd $userprofile/Documents'
 alias dot='cd ~/dotfiles'
 
