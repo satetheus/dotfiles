@@ -23,3 +23,6 @@ RPROMPT=$'$(vcs_info_wrapper)'
 
 # assure gpg doesn't fail with "inappropriate ioctl for device"
 export GPG_TTY=$(tty)
+
+# fixed alt-c equivelant on mac for fzf
+bindkey "ç" fzf-cd-widget
