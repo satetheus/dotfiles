@@ -15,7 +15,7 @@ Plug 'junegunn/fzf'
 Plug 'ajmwagar/vim-deus'
 
 "codota code completion
-Plug 'zxqfl/tabnine-vim'
+"Plug 'zxqfl/tabnine-vim'
 
 cal  plug#end()
 
