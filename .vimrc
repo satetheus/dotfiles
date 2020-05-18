@@ -14,6 +14,9 @@ Plug 'junegunn/fzf'
 "colorscheme
 Plug 'ajmwagar/vim-deus'
 
+"codota code completion
+Plug 'zxqfl/tabnine-vim'
+
 cal  plug#end()
 
 "prevent creation of backups & swp files, muddles git history
