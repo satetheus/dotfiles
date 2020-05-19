@@ -14,6 +14,9 @@ Plug 'junegunn/fzf'
 "colorscheme
 Plug 'ajmwagar/vim-deus'
 
+"visual incrementor
+Plug 'triglav/vim-visual-increment'
+
 "codota code completion
 "Plug 'zxqfl/tabnine-vim'
 
