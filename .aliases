@@ -37,6 +37,8 @@ alias gaddnew='git status --short | grep -v "??" | cut -d " " -f 3 | xargs git a
   alias gtn='gaddnew'
 alias gd='git diff'
 
+alias gcheck="git branch | fzf | cut -d'*' -f2 | xargs git checkout"
+
 gcom () {
     git commit -am "$1"
 }
