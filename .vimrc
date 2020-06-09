@@ -47,8 +47,15 @@ call matchadd('ColorColumn', '\%81v', 100)
 set listchars=trail:.
 set list
 
-"relative line numbering
+"hybrid line numbering
 set number relativenumber
+
+"absolute line numbering on non-active windows
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 "search options
 set hlsearch
