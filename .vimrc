@@ -48,8 +48,7 @@ set listchars=trail:.
 set list
 
 "relative line numbering
-set nu
-set rnu
+set number relativenumber
 
 "search options
 set hlsearch
