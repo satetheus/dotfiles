@@ -22,10 +22,6 @@ Plug 'triglav/vim-visual-increment'
 
 cal  plug#end()
 
-"prevent creation of backups & swp files, muddles git history
-set nobackup
-set noswapfile
-
 "set utf-8 as the default encoding
 set encoding=utf-8
 
