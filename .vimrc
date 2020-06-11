@@ -107,3 +107,7 @@ let @s=";s/\<\(\w\)\(\S*\)/\u\1\L\2/g"
 
 "vim non-sort remove duplicates:
 let @u=";g/^\(.*\)$\n\1$/d"
+
+"convert etl columns to test form, nutrien specific
+let @r=";%s/cast(\".*\", \\(\".*\"\\), .*to_name=\\(\".*\"\\)),/(\2, \1),g"
+
