@@ -22,10 +22,6 @@ Plug 'triglav/vim-visual-increment'
 
 cal  plug#end()
 
-"prevent creation of backups & swp files, muddles git history
-set nobackup
-set noswapfile
-
 "set utf-8 as the default encoding
 set encoding=utf-8
 
@@ -47,9 +43,15 @@ call matchadd('ColorColumn', '\%81v', 100)
 set listchars=trail:.
 set list
 
-"relative line numbering
-set nu
-set rnu
+"hybrid line numbering
+set number relativenumber
+
+"absolute line numbering on non-active windows
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
 
 "search options
 set hlsearch
