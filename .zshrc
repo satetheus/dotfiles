@@ -1,7 +1,10 @@
+# set aliases file
 [[ -e ~/.aliases ]] && emulate sh -c 'source ~/.aliases'
 
+# import/install fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# set prompt to include git branch, if applicable
 setopt prompt_subst
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' actionformats \
@@ -26,3 +29,10 @@ export GPG_TTY=$(tty)
 
 # fixed alt-c equivelant on mac for fzf
 bindkey "ç" fzf-cd-widget
+
+# add timestamp to zsh history
+setopt EXTENDED_HISTORY
+
+# set history to be added to file immediately
+setopt INC_APPEND_HISTORY
+
