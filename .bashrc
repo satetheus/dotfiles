@@ -144,6 +144,9 @@ set keymap vi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# remaps capslock to escape on linux
+setxkbmap -option caps:escape
+
 # VERY DANGER, wsl only
 # get windows user
 win_userprofile="$(cmd.exe /c "<nul set /p=%UserProfile%" 2>/dev/null)"
