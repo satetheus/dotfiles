@@ -36,3 +36,5 @@ setopt EXTENDED_HISTORY
 # set history to be added to file immediately
 setopt INC_APPEND_HISTORY
 
+# set vi mode in zsh
+bindkey -v
