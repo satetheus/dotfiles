@@ -8,6 +8,9 @@ endif
 "specify plugin directory
 call plug#begin('~/.vim/plugged')
 
+"snippet plugin
+Plug 'Sirver/ultisnips'
+
 "fuzzy finder
 Plug 'junegunn/fzf'
 
@@ -38,9 +41,9 @@ set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 set textwidth=0
 set wrapmargin=0
 
-"Make 81st column stand out
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%81v', 100)
+"Implemented JPMH's method for highlighting overlength
+highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+match OverLength /\%>80v.\+/
 
 "show whitespace at end of line
 set listchars=trail:.
@@ -52,8 +55,8 @@ set number relativenumber
 "absolute line numbering on non-active windows
 augroup numbertoggle
   autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  autocmd BufEnter,FocusGained * set relativenumber
+  autocmd BufLeave,FocusLost   * set norelativenumber
 augroup END
 
 "search options
@@ -79,6 +82,13 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 map <Leader>tt :vnew term://bash<CR>
+
+"Ultisnip options
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 "themeing
 syntax on

@@ -6,6 +6,7 @@ ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 ln -s ~/dotfiles/.aliases ~/.aliases 
 ln -s ~/dotfiles/.vimrc ~/.vimrc
+ln -s ~/dotfiles/UltiSnips ~/.vim/UltiSnips
 
 # setup global git ignore
 git config --global core.excludesfile ~/.gitignore_global

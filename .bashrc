@@ -149,3 +149,5 @@ setxkbmap -option caps:escape
 
 # add timestamp to bash history
 export HISTTIMEFORMAT="%d/%m/%y %T "
+
+complete -C /usr/bin/terraform terraform
