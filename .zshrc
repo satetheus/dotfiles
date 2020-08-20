@@ -37,4 +37,4 @@ setopt EXTENDED_HISTORY
 setopt INC_APPEND_HISTORY
 
 # set vi mode in zsh
-bindkey -v
+#bindkey -v

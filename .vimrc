@@ -20,6 +20,9 @@ Plug 'ajmwagar/vim-deus'
 "visual incrementor
 Plug 'triglav/vim-visual-increment'
 
+"snippets plugin
+Plug 'SirVer/ultisnips'
+
 "codota code completion
 "Plug 'zxqfl/tabnine-vim'
 
