@@ -26,7 +26,7 @@ Plug 'SirVer/ultisnips'
 "codota code completion
 "Plug 'zxqfl/tabnine-vim'
 
-cal  plug#end()
+cal plug#end()
 
 "set utf-8 as the default encoding
 set encoding=utf-8
