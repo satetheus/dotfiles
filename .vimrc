@@ -75,6 +75,9 @@ cabbrev vex Vex
 cabbrev ex Ex
 cabbrev sex Sex
 
+"remove banner in file explorer
+let g:netrw_banner = 0
+
 "key remaps
 nnoremap ; :
 nnoremap : ;
