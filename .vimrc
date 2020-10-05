@@ -87,6 +87,25 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 map <Leader>tt :vnew term://bash<CR>
 
+"Template Files
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+  augroup END
+endif
+
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
+  augroup END
+endif
+
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.pl 0r ~/.vim/templates/skeleton.pl
+  augroup END
+endif
+
 "Ultisnip options
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"

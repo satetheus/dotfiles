@@ -7,6 +7,7 @@ ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.aliases ~/.aliases
 ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/UltiSnips ~/.vim/UltiSnips
+ln -s ~/dotfiles/.vim/templates ~/.vim/templates
 
 # install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
