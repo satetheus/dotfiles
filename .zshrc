@@ -1,3 +1,9 @@
+# add custom bin directory
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:${PATH}"
+    export PATH
+fi
+
 # set aliases file
 [[ -e ~/.aliases ]] && emulate sh -c 'source ~/.aliases'
 
