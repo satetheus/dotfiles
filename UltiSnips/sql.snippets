@@ -1,0 +1,14 @@
+snippet trunk
+-liquibase formatted sql
+--changeset chris.mccullough:1.01-data-vault-core-truncate-to-reload-$1
+
+-- *********************** SqlDBM: Snowflake ************************
+--  TABLE NAME: all tables for $1
+-- ******************************************************************
+
+USE SCHEMA DATA_VAULT_CORE;
+
+-- Delete all data loaded by the $1
+
+TRUNCATE TABLE HSAT_$1_LVA;
+endsnippet

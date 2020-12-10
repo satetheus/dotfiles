@@ -20,9 +20,6 @@ Plug 'ajmwagar/vim-deus'
 "visual incrementor
 Plug 'triglav/vim-visual-increment'
 
-"snippets plugin
-Plug 'SirVer/ultisnips'
-
 "codota code completion
 "Plug 'zxqfl/tabnine-vim'
 
@@ -42,9 +39,14 @@ autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 set textwidth=0
 set wrapmargin=0
 
-"Implemented JPMH's method for highlighting overlength
+"Implemented JPMH's method for highlighting overlength, not functional with
+"current styling
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%>80v.\+/
+
+"highlight non-ascii characters, not functional with current styling
+syntax match nonascii "[^\x00-\x7F]"
+highlight nonascii guibg=Red ctermbg=2
 
 "show whitespace at end of line
 set listchars=trail:.
@@ -110,6 +112,7 @@ endif
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 

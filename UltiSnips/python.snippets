@@ -11,3 +11,27 @@ endsnippet
 snippet p
 print($1)$0
 endsnippet
+
+snippet handle
+def handle(message, cache, glue_context, session):
+    """
+    This method handles (no pun intended) the creating and saving of
+    $1 dataframes to snowflake
+    """
+    sf_options = cache["sf_options"].copy()
+    sf_options["sfSchema"] = "DATA_VAULT_CORE"
+    sf_options["QUERY_TAG"] = "$1"
+    options = {"format": "csv", "header": True, "sep": "|", "escape": '/'}
+    dataframe = create_dataframe_from_message(
+        message, glue_context.spark_session, **options
+    )
+    LOG.debug("$1 csv count: (%d)", dataframe.count())
+
+    $1 = create_$1(dataframe)
+    LOG.debug("$1 DF count: (%d)", $1.count())
+
+    dataframes_and_metadata = create_dataframes_from_$1(
+        $1, sf_options
+    )
+    save_dataframes(dataframes_and_metadata)
+endsnippet

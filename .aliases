@@ -1,4 +1,4 @@
-# Aliases
+# indented lines are typo corrections
 
 alias ls='ls -FA'
 alias la='ls -a'
@@ -18,7 +18,9 @@ alias dcs='cd $userprofile/Documents'
 alias dot='pushd ~/dotfiles'
 
 alias fig='vim $(fzf --height=40%)'
+  alias vm='vim'
 
+# GIT RELATED ALIASES
 alias glog='git log --oneline'
   alias golg='glog'
 alias gstat='git status --porcelain'
@@ -56,11 +58,13 @@ gsclone () {
     git clone git@github.com:$1/$2
 }
 
+# converts the remote url to https form
 g2https () {
     names="$(git remote -v | awk '{print $1}' | uniq)"
     urls="$(git remote -v | awk '{print $2}' | uniq)"
 }
 
+# converts the remote url to ssh form
 g2ssh() {
     names="$(git remote -v | awk '{print $1}' | uniq)"
     urls="$(git remote -v | awk '{print $2}' | uniq)"
@@ -76,6 +80,11 @@ preqs () {
     sed -E 's/from (.*) import .*/import \1/;s/#.*//;s/import (\S*).*/\1/;s/\..*//' | \
     sort -u >> \
     $1
+}
+
+pyclean () {
+        find . -type f -name "*.py[co]" -delete
+        find . -type d -name "__pycache__" -delete
 }
 
 srp () {
