@@ -23,5 +23,13 @@ brew install fzf
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+#add talon & configuration
+
+#add sift
+brew install sift
+
+#install gh, github cli
+brew install gh
+
 # restart zsh
 exec zsh -l

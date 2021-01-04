@@ -20,5 +20,16 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+#add talon & configuration
+
+#add sift
+#https://github.com/svent/sift
+
+#install gh, github cli
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+sudo apt-add-repository https://cli.github.com/packages
+sudo apt update
+sudo apt install gh -y
+
 # restart bash
 exec bash -l

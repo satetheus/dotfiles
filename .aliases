@@ -118,3 +118,7 @@ gfe () {
     lineNumber=$(echo $fileToEdit | cut -d ':' -f 2)
     vim +$lineNumber $fileName
 }
+
+# aliases for common gh commands
+alias prc='gh pr create -df'
+alias prv='gh pr view -w'
