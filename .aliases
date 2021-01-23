@@ -39,7 +39,7 @@ alias gaddnew='git status --short | grep -v "??" | cut -d " " -f 3 | xargs git a
   alias gtn='gaddnew'
 alias gd='git diff'
 
-alias gcheck="git branch | fzf | cut -d'*' -f2 | xargs git checkout"
+alias gcheck="git branch | fzf | cut -d'*' -f2 | xargs git checkout && git rev-parse --abbrev-ref HEAD | xargs git pull origin"
 
 gcom () {
     git commit -am "$1"
