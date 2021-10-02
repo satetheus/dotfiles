@@ -1,3 +1,10 @@
+"just in case, & if wanted to put vimrc somewhere else & use the '-u' flag
+"with vim
+set nocompatible
+
+"set specific filetype autocmd to be enabled
+filetype plugin on
+
 "add automatic install of plugin manager
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
