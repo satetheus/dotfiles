@@ -41,8 +41,7 @@ set encoding=utf-8
 set ruler
 
 "set change tabs to spaces in python files only
-autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
-autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
 
 "prevent line wrapping
 set textwidth=0
