@@ -147,6 +147,15 @@ set -o vi
 set editing-mode vi
 set keymap vi
 
+# ensure vim is the default editor used by other programs
+# using both editor & visual here ensures programs using the less-than-correct
+# variable "EDITOR" will still use vim
+# WARNING: this may cause issues on low-baud modems or when addressing slow
+# serial lines. See:
+# https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # this is somehow important for fzf. Don't touch until you know what it does.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
