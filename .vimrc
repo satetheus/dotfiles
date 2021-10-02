@@ -6,6 +6,8 @@ set nocompatible
 filetype plugin on
 
 "add automatic install of plugin manager
+" How could I setup automatic install & update of all plugins without slowing
+" down vim startup? Should only the initial install be automatic?
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -62,14 +64,14 @@ set list
 "hybrid line numbering
 set number relativenumber
 
-"absolute line numbering on non-active windows
+"absolute line numbering on non-active windows, relative on active windows.
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained * set relativenumber
   autocmd BufLeave,FocusLost   * set norelativenumber
 augroup END
 
-"search options
+"search options, ignorecase is necessary for smartcase
 set hlsearch
 set ignorecase
 set smartcase
@@ -94,9 +96,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+"dont know what this is for now.
 map <Leader>tt :vnew term://bash<CR>
 
 "Template Files
+" Could this be done with a function for easier template additions?
 if has("autocmd")
   augroup templates
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
@@ -121,6 +125,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
+" Should consider abbreviating :UltiSnipsEdit if expecting to use it more.
 let g:UltiSnipsEditSplit="vertical"
 
 "themeing
