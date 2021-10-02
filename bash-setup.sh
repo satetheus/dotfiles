@@ -26,10 +26,10 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-#add talon & configuration
+# install all plugins for vim, then close all open windows
+vim +PlugInstall +qall
 
-#add sift
-#https://github.com/svent/sift
+# add talon & configuration
 
 #install gh, github cli
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
