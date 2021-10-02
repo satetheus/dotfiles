@@ -29,8 +29,8 @@ Plug 'ajmwagar/vim-deus'
 "visual incrementor
 Plug 'triglav/vim-visual-increment'
 
-"codota code completion
-"Plug 'zxqfl/tabnine-vim'
+"vim wiki
+Plug 'vimwiki/vimwiki'
 
 cal plug#end()
 
