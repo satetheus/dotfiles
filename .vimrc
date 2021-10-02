@@ -1,4 +1,13 @@
+"just in case, & if wanted to put vimrc somewhere else & use the '-u' flag
+"with vim
+set nocompatible
+
+"set specific filetype autocmd to be enabled
+filetype plugin on
+
 "add automatic install of plugin manager
+" How could I setup automatic install & update of all plugins without slowing
+" down vim startup? Should only the initial install be automatic?
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -20,10 +29,10 @@ Plug 'ajmwagar/vim-deus'
 "visual incrementor
 Plug 'triglav/vim-visual-increment'
 
-"codota code completion
-"Plug 'zxqfl/tabnine-vim'
+"vim wiki
+Plug 'vimwiki/vimwiki'
 
-cal plug#end()
+call plug#end()
 
 "set utf-8 as the default encoding
 set encoding=utf-8
@@ -32,8 +41,7 @@ set encoding=utf-8
 set ruler
 
 "set change tabs to spaces in python files only
-autocmd FileType * set tabstop=2|set shiftwidth=2|set noexpandtab
-autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
 
 "prevent line wrapping
 set textwidth=0
@@ -52,17 +60,17 @@ highlight nonascii guibg=Red ctermbg=2
 set listchars=trail:.
 set list
 
-"hybrid line numbering
-set number relativenumber
+"set line numbering
+set number
 
-"absolute line numbering on non-active windows
+"absolute line numbering on non-active windows, relative on active windows.
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained * set relativenumber
   autocmd BufLeave,FocusLost   * set norelativenumber
 augroup END
 
-"search options
+"search options, ignorecase is necessary for smartcase
 set hlsearch
 set ignorecase
 set smartcase
@@ -87,9 +95,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+"dont know what this is for now.
 map <Leader>tt :vnew term://bash<CR>
 
 "Template Files
+" Could this be done with a function for easier template additions?
 if has("autocmd")
   augroup templates
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
@@ -114,6 +124,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 " If you want :UltiSnipsEdit to split your window.
+" Should consider abbreviating :UltiSnipsEdit if expecting to use it more.
 let g:UltiSnipsEditSplit="vertical"
 
 "themeing
@@ -125,11 +136,6 @@ set background=dark
 colorscheme deus
 
 "MACROS:
-"document formatting for markup conversion to confluence table
-let @m="0xi||f dwi||f a_€kb||||||d$j@t"
-let @d="03f|lyt|3f|pj@d"
-let @q='0f1x"nPF|l"nyt|j@i'
-
 "aligns all words after first space at the 40th column
 let @b="0f 40i 40|dwj"
 
@@ -138,7 +144,7 @@ let @j=";v/€üV/-1j!"
 let @t="/€üVxi€üCkkJgg@t"
 
 "empty line remove with or without whitespace
-let @w=";g/^$\|^s*$/d"
+let @w=";g/^$\|^s*$/dc"
 
 "using words as separators, title case
 let @c=";s/\<\(\w\)\(\w*\)\>/\u\1\L\2/g"
@@ -148,7 +154,4 @@ let @s=";s/\<\(\w\)\(\S*\)/\u\1\L\2/g"
 
 "vim non-sort remove duplicates:
 let @u=";g/^\(.*\)$\n\1$/d"
-
-"convert etl columns to test form, nutrien specific
-let @r=";%s/cast(\".*\", \\(\".*\"\\), .*to_name=\\(\".*\"\\)),/(\2, \1),g"
 
