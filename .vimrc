@@ -32,7 +32,7 @@ Plug 'triglav/vim-visual-increment'
 "vim wiki
 Plug 'vimwiki/vimwiki'
 
-cal plug#end()
+call plug#end()
 
 "set utf-8 as the default encoding
 set encoding=utf-8
