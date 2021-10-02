@@ -60,8 +60,8 @@ highlight nonascii guibg=Red ctermbg=2
 set listchars=trail:.
 set list
 
-"hybrid line numbering
-set number relativenumber
+"set line numbering
+set number
 
 "absolute line numbering on non-active windows, relative on active windows.
 augroup numbertoggle
@@ -136,11 +136,6 @@ set background=dark
 colorscheme deus
 
 "MACROS:
-"document formatting for markup conversion to confluence table
-let @m="0xi||f dwi||f a_€kb||||||d$j@t"
-let @d="03f|lyt|3f|pj@d"
-let @q='0f1x"nPF|l"nyt|j@i'
-
 "aligns all words after first space at the 40th column
 let @b="0f 40i 40|dwj"
 
@@ -159,7 +154,4 @@ let @s=";s/\<\(\w\)\(\S*\)/\u\1\L\2/g"
 
 "vim non-sort remove duplicates:
 let @u=";g/^\(.*\)$\n\1$/d"
-
-"convert etl columns to test form, nutrien specific
-let @r=";%s/cast(\".*\", \\(\".*\"\\), .*to_name=\\(\".*\"\\)),/(\2, \1),g"
 
