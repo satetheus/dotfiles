@@ -1,4 +1,4 @@
-#! usr/bin/env bash
+#! /usr/bin/env bash
 
 # setup links for config files
 ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
