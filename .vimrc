@@ -144,7 +144,7 @@ let @j=";v/€üV/-1j!"
 let @t="/€üVxi€üCkkJgg@t"
 
 "empty line remove with or without whitespace
-let @w=";g/^$\|^s*$/d"
+let @w=";g/^$\|^s*$/dc"
 
 "using words as separators, title case
 let @c=";s/\<\(\w\)\(\w*\)\>/\u\1\L\2/g"
