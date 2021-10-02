@@ -31,7 +31,14 @@ vim +PlugInstall +qall
 
 # add talon & configuration
 
-#install gh, github cli
+# add sift
+pushd /tmp
+wget https://sift-tool.org/downloads/sift/sift_0.9.0_linux_amd64.tar.gz && \
+tar xzf sift_0.9.0_linux_amd64.tar.gz && \\
+sudo mv sift_0.9.0_linux_amd64/sift /usr/local/bin/
+popd
+
+# install gh, github cli
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
 sudo apt-add-repository https://cli.github.com/packages
 sudo apt install gh -y
