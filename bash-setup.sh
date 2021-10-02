@@ -1,5 +1,11 @@
 #! /usr/bin/env bash
 
+#check system is up to date
+sudo apt update
+
+# add xdg-utils if not already installed, & x11-xkb-utils for capslock remap
+sudo apt install xdg-utils x11-xkb-utils -y
+
 # setup links for config files
 ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
 # will add .gitconfig later
@@ -28,7 +34,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 #install gh, github cli
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
 sudo apt-add-repository https://cli.github.com/packages
-sudo apt update
 sudo apt install gh -y
 
 # restart bash
