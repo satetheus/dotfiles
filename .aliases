@@ -122,3 +122,12 @@ gfe () {
 # aliases for common gh commands
 alias prc='gh pr create -df'
 alias prv='gh pr view -w'
+
+# ssh aliases
+sshgh () {
+    if [ $# -eq 2 ]
+    then
+        ssh-keygen -t ed25519 -b 256 -C "${2}" -f ~/.ssh/chris
+    fi
+}
+
