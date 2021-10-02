@@ -47,12 +47,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+       # We have color support; assume it's compliant with Ecma-48
+       # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+       # a case would tend to support setf rather than setaf.)
+       color_prompt=yes
     else
-	color_prompt=
+       color_prompt=
     fi
 fi
 
@@ -92,10 +92,6 @@ fi
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.aliases ]; then
     . ~/.aliases
 fi
@@ -111,7 +107,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# create ssh directory if not exists
+sshdir=~/.ssh
+if [ ! -d "$sshdir" ]; then
+    mkdir ~/.ssh
+fi
+
 # autorun ssh-agent
+# Others have recommended the use of keychain, such as:
+# "eval `keychain --quiet --eval --agents ssh id_rsa`"
+# keychain setup asks for ssh key password at terminal startup, rather than at each use.
 env=~/.ssh/agent.env
 agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
 agent_start () {
@@ -142,6 +147,7 @@ set -o vi
 set editing-mode vi
 set keymap vi
 
+# this is somehow important for fzf. Don't touch until you know what it does.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # remaps capslock to escape on linux
@@ -150,4 +156,5 @@ setxkbmap -option caps:escape
 # add timestamp to bash history
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
+# is this necessary, considering not many machines in use are running terraform?
 complete -C /usr/bin/terraform terraform
