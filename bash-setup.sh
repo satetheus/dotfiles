@@ -43,6 +43,9 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
 sudo apt-add-repository https://cli.github.com/packages
 sudo apt install gh -y
 
+# import gpg key from a specific location
+gpg --import $5
+
 # configure gh & git
 #configure git user
 git config --global user.email $1
