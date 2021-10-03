@@ -15,9 +15,6 @@ ln -s ~/dotfiles/.vimrc ~/.vimrc
 ln -s ~/dotfiles/UltiSnips ~/.vim/UltiSnips
 ln -s ~/dotfiles/.vim/templates ~/.vim/templates
 
-# setup global git ignore
-git config --global core.excludesfile ~/.gitignore_global
-
 # install fzf, could be replaced by 'apt-get install fzf' theorectically
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
@@ -51,6 +48,8 @@ gpg --import $5
 git config --global user.email $1
 git config --global user.name $2
 git config --global commit.gpgsign true
+git config --global core.excludesfile ~/.gitignore_global
+
 #create ssh key
 ssh-keygen -t ed25519 -b 256 -f ~/.ssh/$3
 #add ssh key to config
