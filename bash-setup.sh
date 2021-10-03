@@ -43,5 +43,20 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
 sudo apt-add-repository https://cli.github.com/packages
 sudo apt install gh -y
 
+# configure gh & git
+#configure git user
+git config --global user.email $1
+git config --global user.name $2
+git config --global commit.gpgsign true
+#create ssh key
+ssh-keygen -t ed25519 -b 256 -f ~/.ssh/$3
+#add ssh key to config
+echo "Host Github.com  HostName Github.com  IdentityFile ~/.ssh/$3  User git" >> ~/.ssh/config
+#run gh config
+gh config set editor vim
+gh config set git_protocol ssh
+#run gh auth login with token?
+gh auth login --hostname Github.com --with-token < $4
+
 # restart bash
 exec bash -l

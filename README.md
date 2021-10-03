@@ -5,7 +5,7 @@ The setup files add some functionality I find important. Things such as a fuzzy 
 ## Install
 ### Linux (Ubuntu)
   - Clone repo
-  - Run `bash-setup.sh`
+  - Run `bash-setup.sh your_email your_username ssh_key_name gh_auth_token_location`
 
 ### Mac
   - Clone repo
