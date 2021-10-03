@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#!/bin/bash
 
 #check system is up to date
 sudo apt update
