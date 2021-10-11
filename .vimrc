@@ -120,12 +120,11 @@ endif
 
 "Ultisnip options
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
-" If you want :UltiSnipsEdit to split your window.
-" Should consider abbreviating :UltiSnipsEdit if expecting to use it more.
 let g:UltiSnipsEditSplit="vertical"
+cabbrev snip UltiSnipsEdit
 
 "themeing
 syntax on
