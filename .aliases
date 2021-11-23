@@ -20,6 +20,12 @@ alias dot='pushd ~/dotfiles'
 alias fig='vim $(fzf --height=40%)'
   alias vm='vim'
 
+# alias to fix cross-platform issue
+alias aws.exe='aws'
+
+# vim related aliases
+alias vimu='vim +PlugInstall +qa'
+
 # GIT RELATED ALIASES
 alias glog='git log --oneline'
   alias golg='glog'
