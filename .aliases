@@ -40,9 +40,10 @@ alias gpull='git rev-parse --abbrev-ref HEAD | xargs git pull origin'
 alias gaddnew='git status --short | grep -v "??" | cut -d " " -f 3 | xargs git add'
   alias gtnew='gaddnew'
   alias gtn='gaddnew'
-alias gd='git diff'
+alias gd = 'git diff'
+alias gdd='git status -s | fzf --no-sort --reverse --preview "git diff --color=always {+2}" --preview-window=right:60%:wrap --bind=ctrl-k:preview-up --bind=ctrl-j:preview-down'
 
-alias gcheck="git branch | fzf | cut -d'*' -f2 | xargs git checkout && git rev-parse --abbrev-ref HEAD | xargs git pull origin"
+alias gcheck="git branch | fzf --preview 'git diff --color=always $(git rev-parse --abbrev-ref HEAD)..{+1}' --preview-window=right:60%:wrap | cut -d'*' -f2 | xargs git checkout && git rev-parse --abbrev-ref HEAD | xargs git pull origin"
 
 gcom () {
     git commit -am "$1"
