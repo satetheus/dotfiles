@@ -32,6 +32,9 @@ Plug 'triglav/vim-visual-increment'
 "vim wiki
 Plug 'vimwiki/vimwiki'
 
+"syntax checker
+Plug 'vim-syntastic/syntastic'
+
 call plug#end()
 
 "set utf-8 as the default encoding
@@ -137,6 +140,15 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsEditSplit="vertical"
 cabbrev snip UltiSnipsEdit
+
+"Syntastic options
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatusFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "themeing
 syntax on
