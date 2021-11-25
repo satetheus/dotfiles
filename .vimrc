@@ -121,6 +121,18 @@ if has("autocmd")
   augroup END
 endif
 
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+  augroup END
+endif
+
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
+  augroup END
+endif
+
 "Ultisnip options
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
