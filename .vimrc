@@ -88,6 +88,9 @@ cabbrev vex Vex
 cabbrev ex Ex
 cabbrev sex Sex
 
+" write with sudo trick alias
+cnoremap w!! w !sudo tee > /dev/null %
+
 "remove banner in file explorer
 let g:netrw_banner = 0
 
