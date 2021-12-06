@@ -37,6 +37,15 @@ git clone https://github.com/nvm-sh/nvm.git .nvm
 . .nvm/install.sh && nvm install node && npm install -g jshint
 popd
 
+# install golang
+pushd /tmp
+# check architecture & OS
+# download golang for arch/os, e.g.: https://go.dev/dl/go1.17.4.linux-amd64.tar.gz
+# do checksum
+# install if checksum match
+# set environment variables if necessary
+popd
+
 # add plugin manager for vim
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
