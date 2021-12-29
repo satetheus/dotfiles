@@ -43,6 +43,9 @@ set encoding=utf-8
 "set cursor positon display
 set ruler
 
+"turn off audio
+set belloff=all
+
 "set change tabs to spaces in python files only
 autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
 
