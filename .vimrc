@@ -14,27 +14,15 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-"specify plugin directory
-call plug#begin('~/.vim/plugged')
-
-"snippet plugin
-Plug 'Sirver/ultisnips'
-
-"fuzzy finder
-Plug 'junegunn/fzf'
-
-"colorscheme
-Plug 'ajmwagar/vim-deus'
-
-"visual incrementor
-Plug 'triglav/vim-visual-increment'
-
-"vim wiki
-Plug 'vimwiki/vimwiki'
-
-"syntax checker
-Plug 'vim-syntastic/syntastic'
-
+"install plugins
+call plug#begin('~/.vim/plugged') "specify plugin directory
+Plug 'Sirver/ultisnips' "snippet plugin
+Plug 'ajmwagar/vim-deus' "colorscheme
+Plug 'triglav/vim-visual-increment' "visual incrementor
+Plug 'vimwiki/vimwiki' "vim wiki
+Plug 'pangloss/vim-javascript' "JavaScript support
+Plug 'leafgarland/typescript-vim' "Typescript syntax
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "set utf-8 as the default encoding
@@ -147,14 +135,8 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
 let g:UltiSnipsEditSplit="vertical"
 cabbrev snip UltiSnipsEdit
 
-"Syntastic options
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatusFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"CoC options
+let g:coc_global_extensions = ['coc-tsserver']
 
 "themeing
 syntax on
