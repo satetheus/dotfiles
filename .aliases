@@ -15,7 +15,7 @@ elif [ -n "$BASH_VERSION" ]; then
 fi
 
 alias dcs='cd $userprofile/Documents'
-alias dot='pushd ~/dotfiles'
+alias dotf='pushd ~/dotfiles'
 
 alias fig='vim $(fzf --height=40%)'
   alias vm='vim'
@@ -135,3 +135,5 @@ sshgh () {
     fi
 }
 
+# ssh restart
+alias rssh='eval $(ssh-agent -s) && ssh-add ~/.ssh/cwmccullough'
