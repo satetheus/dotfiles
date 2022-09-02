@@ -12,3 +12,48 @@ USE SCHEMA DATA_VAULT_CORE;
 
 TRUNCATE TABLE HSAT_$1_LVA;
 endsnippet
+
+
+snippet date
+case when "$1" not like ''
+  then cast(date_parse("$1", '%m/%d/%Y') as date)
+  else NULL
+  end as $2,
+endsnippet
+
+
+snippet ctas
+CREATE TABLE sap_erp_source.$1
+WITH (
+  format='PARQUET',
+  write_compression='SNAPPY',
+  external_location='s3://sap-erp-source-dev/data-warehouse/$1/'
+) AS
+endsnippet
+
+
+snippet dupe
+select $1, count($2) dupes
+from $3
+group by $1
+having count($2) > 1
+order by dupes desc
+endsnippet
+
+
+snippet create
+CREATE EXTERNAL TABLE IF NOT EXISTS $1(
+    $0
+)
+STORED AS parquet
+LOCATION 's3://sap-erp-source-dev/data-warehouse/$1/'
+TBLPROPERTIES (
+    'compressionType' = 'SNAPPY'
+)
+endsnippet
+
+
+snippet insert
+insert into $1
+$0
+endsnippet
