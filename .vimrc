@@ -88,6 +88,8 @@ let g:netrw_banner = 0
 "key remaps
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
