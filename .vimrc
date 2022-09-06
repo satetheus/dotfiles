@@ -17,7 +17,7 @@ endif
 "install plugins
 call plug#begin('~/.vim/plugged') "specify plugin directory
 Plug 'Sirver/ultisnips' "snippet plugin
-Plug 'ajmwagar/vim-deus' "colorscheme
+Plug 'lifepillar/vim-gruvbox8' "updated colorscheme
 Plug 'triglav/vim-visual-increment' "visual incrementor
 Plug 'vimwiki/vimwiki' "vim wiki
 Plug 'pangloss/vim-javascript' "JavaScript support
@@ -144,7 +144,7 @@ set term=screen-256color
 set t_ut=
 set t_Co=256
 set background=dark
-colorscheme deus
+colorscheme gruvbox8
 
 "MACROS:
 "aligns all words after first space at the 40th column
