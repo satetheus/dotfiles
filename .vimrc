@@ -137,6 +137,7 @@ cabbrev snip UltiSnipsEdit
 
 "CoC options
 let g:coc_global_extensions = ['coc-tsserver']
+let g:coc_disable_startup_warning = 1
 
 "themeing
 syntax on
