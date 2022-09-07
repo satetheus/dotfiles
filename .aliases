@@ -137,3 +137,13 @@ sshgh () {
 
 # ssh restart
 alias rssh='eval $(ssh-agent -s) && ssh-add ~/.ssh/cwmccullough'
+
+# growmark specific aliases
+gac () {
+    if [ $# -eq 2 ]
+    then
+      powershell.exe gcu gac -$1 -m $2
+    else
+      echo 'Program needs environment parameter & mfa parameter'
+    fi
+}

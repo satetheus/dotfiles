@@ -152,9 +152,8 @@ colorscheme deus
 "aligns all words after first space at the 40th column
 let @b="0f 40i 40|dwj"
 
-"format downloaded confluence table
-let @j=";v/€üV/-1j!"
-let @t="/€üVxi€üCkkJgg@t"
+"convert windows environment variables to linux environment variables
+let @t="3kJxJxJx;%s/running: setx \\(\\w\\+\\) \\(.*\\)$/export \\1='\\2';ggVG;w !clip.exe"
 
 "empty line remove with or without whitespace
 let @w=";g/^$\|^s*$/dc"
