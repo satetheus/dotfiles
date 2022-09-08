@@ -106,29 +106,9 @@ nnoremap <C-l> <C-w>l
 if has("autocmd")
   augroup templates
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
-  augroup END
-endif
-
-if has("autocmd")
-  augroup templates
     autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
-  augroup END
-endif
-
-if has("autocmd")
-  augroup templates
     autocmd BufNewFile *.pl 0r ~/.vim/templates/skeleton.pl
-  augroup END
-endif
-
-if has("autocmd")
-  augroup templates
     autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
-  augroup END
-endif
-
-if has("autocmd")
-  augroup templates
     autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
   augroup END
 endif
