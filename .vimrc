@@ -12,7 +12,6 @@ endif
 call plug#begin('~/.vim/plugged') "specify plugin directory
 Plug 'Sirver/ultisnips' "snippet plugin
 Plug 'lifepillar/vim-gruvbox8' "updated colorscheme
-Plug 'triglav/vim-visual-increment' "visual incrementor
 Plug 'vimwiki/vimwiki' "vim wiki
 Plug 'pangloss/vim-javascript' "JavaScript support
 Plug 'leafgarland/typescript-vim' "Typescript syntax
