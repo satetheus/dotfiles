@@ -101,8 +101,6 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"dont know what this is for now.
-map <Leader>tt :vnew term://bash<CR>
 
 "Template Files
 if has("autocmd")
