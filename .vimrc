@@ -137,10 +137,6 @@ colorscheme gruvbox8
 "aligns all words after first space at the 40th column
 let @b="0f 40i 40|dwj"
 
-"format downloaded confluence table
-let @j=";v/€üV/-1j!"
-let @t="/€üVxi€üCkkJgg@t"
-
 "empty line remove with or without whitespace
 let @w=";g/^$\|^s*$/dc"
 
