@@ -38,14 +38,24 @@ set expandtab
 set textwidth=0
 set wrapmargin=0
 
-"Implemented JPMH's method for highlighting overlength, not functional with
-"current styling
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>80v.\+/
+"highlight characters past the 80th column in red
+function! LineLength() abort
+    highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+    match OverLength /\%>80v.\+/
+endfunction
 
-"highlight non-ascii characters, not functional with current styling
-syntax match nonascii "[^\x00-\x7F]"
-highlight nonascii guibg=Red ctermbg=2
+"highlight non-ascii characters
+function! OtherChars() abort
+    syntax match nonascii "[^\x00-\x7F]"
+    highlight nonascii guibg=Red ctermbg=2
+endfunction
+
+"enact the custom highlights & colors
+augroup CustomColors
+    autocmd!
+    autocmd Colorscheme * call LineLength()
+    autocmd Colorscheme * call OtherChars()
+augroup END
 
 "show whitespace at end of line
 set listchars=trail:.
