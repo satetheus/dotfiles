@@ -1,7 +1,3 @@
-"just in case, & if wanted to put vimrc somewhere else & use the '-u' flag
-"with vim
-set nocompatible
-
 "set specific filetype autocmd to be enabled
 filetype plugin on
 
