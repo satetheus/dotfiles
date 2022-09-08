@@ -1,9 +1,7 @@
 "set specific filetype autocmd to be enabled
 filetype plugin on
 
-"add automatic install of plugin manager
-" How could I setup automatic install & update of all plugins without slowing
-" down vim startup? Should only the initial install be automatic?
+"add automatic install of plugin manager, if no plugin are installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -66,7 +64,7 @@ set ignorecase
 set smartcase
 set incsearch
 
-"split settings
+"split settings, I don't think these are actually working
 set splitbelow splitright
 set fillchars+=vert:\ 
 
@@ -94,7 +92,6 @@ nnoremap <C-l> <C-w>l
 map <Leader>tt :vnew term://bash<CR>
 
 "Template Files
-" Could this be done with a function for easier template additions?
 if has("autocmd")
   augroup templates
     autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
