@@ -29,7 +29,10 @@ set ruler
 set belloff=all
 
 "set change tabs to spaces in python files only
-autocmd FileType * set tabstop=4|set shiftwidth=4|set expandtab
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 
 "prevent line wrapping
 set textwidth=0
