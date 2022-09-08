@@ -57,6 +57,10 @@ augroup CustomColors
     autocmd Colorscheme * call OtherChars()
 augroup END
 
+"set indentation
+set autoindent
+filetype plugin indent on
+
 "show whitespace at end of line
 set listchars=trail:.
 set list
