@@ -27,7 +27,7 @@ set ruler
 "turn off audio
 set belloff=all
 
-"set change tabs to spaces in python files only
+"tab settings
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
