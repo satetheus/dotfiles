@@ -90,7 +90,7 @@ set ignorecase
 set smartcase
 set incsearch
 
-"split settings, I don't think these are actually working
+"split settings, not working with vex
 set splitbelow splitright
 set fillchars+=vert:\ 
 
