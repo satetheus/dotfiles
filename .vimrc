@@ -49,11 +49,21 @@ function! OtherChars() abort
     highlight nonascii guibg=Red ctermbg=2
 endfunction
 
+"test transparent background
+function! Transparent() abort
+    autocmd vimEnter * highlight Normal guibg=NONE ctermbg=NONE
+    highlight VertSplit guibg=NONE ctermbg=NONE
+    highlight StatusLine guibg=bg ctermbg=bg guifg=bg ctermfg=bg
+    highlight StatusLineNc guibg=bg ctermbg=bg guifg=bg ctermfg=bg
+    set laststatus=0
+endfunction
+
 "enact the custom highlights & colors
 augroup CustomColors
     autocmd!
     autocmd Colorscheme * call LineLength()
     autocmd Colorscheme * call OtherChars()
+    autocmd Colorscheme * call Transparent()
 augroup END
 
 "set indentation
