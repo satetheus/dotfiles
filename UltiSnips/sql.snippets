@@ -33,11 +33,11 @@ endsnippet
 
 
 snippet dupe
-select $1, count($2) dupes
-from $3
+select ${1:col(s)}, count(${2:*}) ${3:dupes}
+from "${4:database}"."${5:table}"
 group by $1
 having count($2) > 1
-order by dupes desc
+order by $3 desc
 endsnippet
 
 
