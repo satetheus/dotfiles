@@ -89,6 +89,8 @@ set hlsearch
 set ignorecase
 set smartcase
 set incsearch
+"clear highlight
+map <leader>c ;noh<CR>
 
 "split settings, not working with vex
 set splitbelow splitright
