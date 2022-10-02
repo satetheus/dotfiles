@@ -139,7 +139,7 @@ let g:coc_disable_startup_warning = 1
 "themeing
 syntax on
 set term=screen-256color
-set t_ut=
+set t_ut=""
 set t_Co=256
 set background=dark
 colorscheme gruvbox8
