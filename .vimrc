@@ -116,15 +116,13 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 "Template Files
-if has("autocmd")
-  augroup templates
-    autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
-    autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
-    autocmd BufNewFile *.pl 0r ~/.vim/templates/skeleton.pl
-    autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
-    autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
-  augroup END
-endif
+augroup templates
+  autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+  autocmd BufNewFile *.py 0r ~/.vim/templates/skeleton.py
+  autocmd BufNewFile *.pl 0r ~/.vim/templates/skeleton.pl
+  autocmd BufNewFile *.html 0r ~/.vim/templates/skeleton.html
+  autocmd BufNewFile *.js 0r ~/.vim/templates/skeleton.js
+augroup END
 
 "Ultisnip options
 let g:UltiSnipsExpandTrigger="<tab>"
