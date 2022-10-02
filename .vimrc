@@ -60,7 +60,7 @@ endfunction
 
 "enact the custom highlights & colors
 augroup CustomColors
-    autocmd!
+    autocmd! CustomColors
     autocmd Colorscheme * call LineLength()
     autocmd Colorscheme * call OtherChars()
     autocmd Colorscheme * call Transparent()
@@ -79,7 +79,7 @@ set number
 
 "absolute line numbering on non-active windows, relative on active windows.
 augroup numbertoggle
-  autocmd!
+  autocmd! numbertoggle
   autocmd BufEnter,FocusGained * set relativenumber
   autocmd BufLeave,FocusLost   * set norelativenumber
 augroup END
