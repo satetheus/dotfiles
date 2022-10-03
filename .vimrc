@@ -115,6 +115,14 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+"set sift to be used by :grep
+if executable("sift")
+    set grepprg=sift\ --ignore-case\ --filename\ -n
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+    command! -nargs=+ Sift execute 'silent grep! <args>' | copen
+    map <leader>s ;Sift 
+endif
+
 "Template Files
 augroup templates
   autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
