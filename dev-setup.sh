@@ -14,9 +14,7 @@ ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
 # will add .gitconfig later
 ln -s ~/dotfiles/.bashrc ~/.bashrc
 ln -s ~/dotfiles/.aliases ~/.aliases 
-ln -s ~/dotfiles/.vimrc ~/.vimrc
-ln -s ~/dotfiles/UltiSnips ~/.vim/UltiSnips
-ln -s ~/dotfiles/.vim/templates ~/.vim/templates
+ln -s ~/dotfiles/neovim/ ~/.config/nvim/
 
 # install homebrew & git if on mac
 if [[ "$OSTYPE" == "darwin"* ]]; then
