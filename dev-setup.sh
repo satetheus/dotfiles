@@ -7,20 +7,22 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
     # add xdg-utils if not already installed, & x11-xkb-utils for capslock remap
     sudo apt install xdg-utils x11-xkb-utils -y
+
+    # install gh, github cli
+    # is the adding of this keyserver necessary or a good idea?
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
+    sudo apt-add-repository https://cli.github.com/packages
+    sudo apt install gh -y
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    # install homebrew, git, & github cli if on mac
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    brew install git
+    brew install gh
 fi
 
 # setup links for config files
-ln -s ~/dotfiles/.gitignore_global ~/.gitignore_global
-# will add .gitconfig later
-ln -s ~/dotfiles/.bashrc ~/.bashrc
-ln -s ~/dotfiles/.aliases ~/.aliases 
+ln -s ~/dotfiles/homedir/ ~/
 ln -s ~/dotfiles/neovim/ ~/.config/nvim/
-
-# install homebrew & git if on mac
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install git
-fi
 
 # setup global git ignore
 git config --global core.excludesfile ~/.gitignore_global
@@ -50,16 +52,6 @@ wget https://sift-tool.org/downloads/sift/sift_0.9.0_linux_amd64.tar.gz && \
 tar xzf sift_0.9.0_linux_amd64.tar.gz && \\
 sudo mv sift_0.9.0_linux_amd64/sift /usr/local/bin/
 popd
-
-# install gh, github cli
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # is the adding of this keyserver necessary or a good idea?
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-    sudo apt-add-repository https://cli.github.com/packages
-    sudo apt install gh -y
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    brew install gh
-fi
 
 # restart bash
 exec bash -l
