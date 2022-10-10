@@ -21,8 +21,15 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # setup links for config files
-ln -s ~/dotfiles/homedir/ ~/
-ln -s ~/dotfiles/neovim/ ~/.config/nvim/
+pushd ~
+find "$HOME/dotfiles/homedir" -maxdepth 1 -printf '%P\n' | while read file; do ln -s "$HOME/dotfiles/homedir/$file" "$file"; done
+popd
+mkdir $HOME/.config/nvim
+pushd $HOME/.config/nvim
+find "$HOME/dotfiles/neovim" -maxdepth 1 -printf '%P\n' | while read file; do ln -s "$HOME/dotfiles/neovim/$file" "$file"; done
+popd
+#ln -s ~/dotfiles/homedir ~
+#ln -s ~/dotfiles/neovim ~/.config/nvim
 
 # setup global git ignore
 git config --global core.excludesfile ~/.gitignore_global
