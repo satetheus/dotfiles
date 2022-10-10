@@ -5,21 +5,13 @@ The setup files add some functionality I find important. Things such as a fuzzy 
 ## Install
 ### Linux (Ubuntu)
   - Clone repo
-  - Run `bash-setup.sh`
+  - Run `dev-setup.sh`
 
 ### Mac
   - Clone repo
-  - Run `zsh-setup.sh` (may require extra permissions)
+  - Run `dev-setup.sh` (may require extra permissions)
 
 ### Windows
   - Install wsl (`wsl --install` in powershell or cmd on modern windows)
   - Clone repo in wsl home directory (Could this be made simpler in case git isn't installed?)
-  - Run `bash-setup.sh`
-
-## ToDo
- - Create windows/wsl setup file (batch/powershell file)
- - Combine zsh & bash setups into 1 file
- - Create command/program to list all aliases & what they do
- - Add capslock remap to windows setup
- - Create a *lite* version of setup script, &/or make setup scripts more multi-user friendly.
- - Add talonvoice configuration to setup files (consider adding autostart as well).
+  - Run `dev-setup.sh`
