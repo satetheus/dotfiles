@@ -13,3 +13,6 @@ let @s=";s/\<\(\w\)\(\S*\)/\u\1\L\2/g"
 
 "vim non-sort remove duplicates:
 let @u=";g/^\(.*\)$\n\1$/d"
+
+"convert windows environment variables to linux environment variables
+let @t=";%s/running: setx \\(\\w\\+\\) \\(.*\\)$/export \\1='\\2';ggVG;w !clip.exe"
