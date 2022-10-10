@@ -17,11 +17,12 @@ fi
 alias dcs='cd $userprofile/Documents'
 alias dotf='pushd ~/dotfiles'
 
-alias fig='vim $(fzf --height=40%)'
-  alias vm='vim'
+alias fig='nvim $(fzf --height=40%)'
+  alias vm='nvim'
 
-# vim related aliases
-alias vimu='vim +PlugInstall +qa'
+# nvim related aliases
+alias vimu='nvim +PlugInstall +qa'
+alias nim='nvim'
 
 # GIT RELATED ALIASES
 alias glog='git log --oneline'
@@ -120,7 +121,7 @@ gfe () {
     fileToEdit=$(grep -rn ${1} . | fzf | cut -d ':' -f 1-2)
     fileName=$(echo $fileToEdit | cut -d ':' -f 1)
     lineNumber=$(echo $fileToEdit | cut -d ':' -f 2)
-    vim +$lineNumber $fileName
+    nvim +$lineNumber $fileName
 }
 
 # aliases for common gh commands
