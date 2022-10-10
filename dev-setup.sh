@@ -10,8 +10,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # update system
     sudo apt update
 
-    # gh for github cli, neovim, & xdg-utils & x11-xkb-utils for capslock remap
-    sudo apt install gh neovim xdg-utils x11-xkb-utils -y
+    # gh for github cli, neovim, fd-find for fzf, & xdg-utils & x11-xkb-utils for capslock remap
+    sudo apt install gh neovim xdg-utils x11-xkb-utils fd-find -y
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # install homebrew, git, github cli, & neovim if on mac

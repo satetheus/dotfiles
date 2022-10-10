@@ -159,6 +159,12 @@ export EDITOR="$VISUAL"
 # this is somehow important for fzf. Don't touch until you know what it does.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# add local variables from another file
+. $HOME/.local_vars
+
+# set fzf to use fd
+export FZF_DEFAULT_COMMAND="fdfind . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+
 # remaps capslock to escape on linux
 setxkbmap -option caps:escape
 
