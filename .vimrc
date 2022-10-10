@@ -153,7 +153,7 @@ colorscheme deus
 let @b="0f 40i 40|dwj"
 
 "convert windows environment variables to linux environment variables
-let @t="3kJxJxJx;%s/running: setx \\(\\w\\+\\) \\(.*\\)$/export \\1='\\2';ggVG;w !clip.exe"
+let @t=";%s/running: setx \\(\\w\\+\\) \\(.*\\)$/export \\1='\\2';ggVG;w !clip.exe"
 
 "empty line remove with or without whitespace
 let @w=";g/^$\|^s*$/dc"
