@@ -62,6 +62,10 @@ vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', {noremap = true
 --clear highlight
 vim.api.nvim_set_keymap('', '<leader>c', '<cmd>noh<CR>', {noremap = true})
 
+--gmk auth tool
+vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
+
+
 --set sift to be used by :grep
 vim.cmd([[
 if executable("sift")
@@ -71,3 +75,5 @@ if executable("sift")
     map <leader>s ;Sift 
 endif
 ]])
+
+vim.cmd('let $BASH_ENV = "~/.aliases"')

@@ -91,6 +91,9 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# expand aliases so they are available in non-interactive sessions
+shopt -s expand_aliases
+
 # Alias definitions.
 if [ -f ~/.aliases ]; then
     . ~/.aliases
