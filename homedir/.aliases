@@ -124,6 +124,17 @@ gfe () {
     nvim +$lineNumber $fileName
 }
 
+# find the top N number of commands used in history
+common () {
+    if [ $# -eq 1 ]
+    then
+        # credit to Brandon Wallace for this awk code & piping it to sort & head
+        history | \
+        awk '{cmd[$4]++} END {for(elem in cmd) {print cmd[elem] " " elem}}' | \
+        sort -n -r | \
+        head -${1}
+    fi
+
 # aliases for common gh commands
 alias prc='gh pr create -df'
 alias prv='gh pr view -w'
