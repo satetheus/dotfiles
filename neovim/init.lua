@@ -62,6 +62,12 @@ vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', {noremap = true
 --clear highlight
 vim.api.nvim_set_keymap('', '<leader>c', '<cmd>noh<CR>', {noremap = true})
 
+--save to clipboard (wsl only)
+vim.api.nvim_set_keymap('c', 'wc', 'w !clip.exe', {noremap = true})
+
+--reload init.lua
+vim.api.nvim_set_keymap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>', {noremap = true})
+
 --gmk auth tool
 vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
 
