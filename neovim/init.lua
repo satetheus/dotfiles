@@ -14,6 +14,7 @@ set.tabstop = 8
 set.softtabstop = 4
 set.shiftwidth = 4
 set.expandtab = true
+set.listchars:append({tab = "->"}) --visualize tabs
 
 --show whitespace at end of line
 set.listchars:append({trail = "."})
