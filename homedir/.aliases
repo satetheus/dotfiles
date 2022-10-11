@@ -134,6 +134,7 @@ common () {
         sort -n -r | \
         head -${1}
     fi
+}
 
 # aliases for common gh commands
 alias prc='gh pr create -df'

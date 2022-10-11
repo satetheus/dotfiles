@@ -57,7 +57,7 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
 
 -- write with sudo trick alias
-vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %')
+vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', {noremap = true})
 
 --clear highlight
 vim.api.nvim_set_keymap('', '<leader>c', '<cmd>noh<CR>', {noremap = true})
