@@ -14,6 +14,7 @@ set.tabstop = 8
 set.softtabstop = 4
 set.shiftwidth = 4
 set.expandtab = true
+set.listchars:append({tab = "->"}) --visualize tabs
 
 --show whitespace at end of line
 set.listchars:append({trail = "."})
@@ -56,10 +57,20 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
 
 -- write with sudo trick alias
-vim.keymap.set('c', 'w!!', 'w !sudo tee > /dev/null %')
+vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', {noremap = true})
 
 --clear highlight
 vim.api.nvim_set_keymap('', '<leader>c', '<cmd>noh<CR>', {noremap = true})
+
+--save to clipboard (wsl only)
+vim.api.nvim_set_keymap('c', 'wc', 'w !clip.exe', {noremap = true})
+
+--reload init.lua
+vim.api.nvim_set_keymap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>', {noremap = true})
+
+--gmk auth tool
+vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
+
 
 --set sift to be used by :grep
 vim.cmd([[
@@ -70,3 +81,5 @@ if executable("sift")
     map <leader>s ;Sift 
 endif
 ]])
+
+vim.cmd('let $BASH_ENV = "~/.aliases"')
