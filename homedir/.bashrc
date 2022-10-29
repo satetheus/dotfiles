@@ -168,6 +168,9 @@ export EDITOR="$VISUAL"
 # set fzf to use fd
 export FZF_DEFAULT_COMMAND="fdfind . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
 
+# set alt-c to search all directories
+export FZF_ALT_C_COMMAND="fdfind . $HOME $PROJECT_DIR --type d -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+
 # remaps capslock to escape on linux
 setxkbmap -option caps:escape
 
