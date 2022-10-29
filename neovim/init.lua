@@ -46,7 +46,7 @@ vim.cmd('cabbrev ex Explore')
 vim.cmd('cabbrev sex Sexplore')
 
 --remove banner in file explorer
-vim.cmd('let g:netrw_banner = 0')
+vim.g.netrw_banner = 0
 
 --quality of life key remaps
 vim.api.nvim_set_keymap('', ';', ':', {noremap = true})

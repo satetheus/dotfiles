@@ -19,17 +19,17 @@ vim.call('plug#begin', '~/.vim/plugged') --specify plugin directory
 vim.call('plug#end')
 
 --Ultisnip options
+vim.g.UltiSnipsExpandTrigger = "<tab>"
+vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
+vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
+vim.g.UltiSnipsEditSplit = "vertical"
 vim.cmd [[
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
-let g:UltiSnipsEditSplit="vertical"
-cabbrev snip UltiSnipsEdit
 ]]
+vim.cmd('cabbrev snip UltiSnipsEdit')
 
 --CoC options
 vim.cmd [[
-let g:coc_global_extensions = ['coc-tsserver']
-let g:coc_disable_startup_warning = 1
+let g:coc_global_extensions=['coc-tsserver']
 ]]
+vim.g.coc_disable_startup_warning = 1
