@@ -1,9 +1,21 @@
---highlight characters past the 80th column in red
-function LineLength()
-    vim.cmd[[
-    highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-    match OverLength /\%>80v.\+/
-    ]]
+-- Set a flag to track the line length highlighting status
+local line_length_highlighting_on = false
+
+--highlight characters past the 80th column in red if toggled
+function ToggleLineLength()
+    if line_length_highlighting_on then
+        vim.cmd[[
+        match none
+        highlight clear OverLength
+        ]]
+        line_length_highlighting_on = false
+    else
+        vim.cmd[[
+        highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+        match OverLength /\%>80v.\+/
+        ]]
+        line_length_highlighting_on = true
+    end
 end
 
 --highlight non-ascii characters
@@ -27,7 +39,7 @@ end
 
 --enact the custom highlights & colors
 vim.api.nvim_create_augroup('CustomColors', {clear = true})
-vim.api.nvim_create_autocmd({"Colorscheme"}, {group = 'CustomColors', pattern = {'*'}, callback = LineLength})
+vim.api.nvim_create_autocmd({"Colorscheme"}, {group = 'CustomColors', pattern = {'*'}, callback = ToggleLineLength})
 vim.api.nvim_create_autocmd({"Colorscheme"}, {group = 'CustomColors', pattern = {'*'}, callback = OtherChars})
 vim.api.nvim_create_autocmd({"Colorscheme"}, {group = 'CustomColors', pattern = {'*'}, callback = Transparent})
 

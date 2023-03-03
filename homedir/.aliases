@@ -1,11 +1,21 @@
 # indented lines are typo corrections
 
+# ls without . files
 alias ls='ls -FA'
+
+# ls with . files & short format
 alias la='ls -a'
+
+# ls with . file & long format
 alias ll='ls -al'
+
+# exit
 alias q='exit'
 
+# pushd
 alias cdd='pushd'
+
+# popd
 alias b='popd'
 
 if [ -n "$ZSH_VERSION" ]; then
@@ -14,63 +24,88 @@ elif [ -n "$BASH_VERSION" ]; then
   alias r='exec bash -l'
 fi
 
+# cd to Documents folder if using wsl
 alias dcs='cd $userprofile/Documents'
+
+# cd to dotfiles
 alias dotf='pushd ~/dotfiles'
 
+# open fuzzy found file in neovim
 alias fig='nvim $(fzf --height=40%)'
   alias vm='nvim'
 
 # nvim related aliases
+# update neovim plugins & exit
 alias vimu='nvim +PlugInstall +qa'
+
+# shortened nvim
 alias nim='nvim'
 
 # GIT RELATED ALIASES
+# single line format git log
 alias glog='git log --oneline'
   alias golg='glog'
+
+# porcelain format git status
 alias gstat='git status --porcelain'
   alias gast='gstat'
   alias gsta='gstat'
   alias gstot='gstat'
+
+# git push to origin
 alias gpush='git rev-parse --abbrev-ref HEAD | xargs git push origin'
   alias gpshu='gpush'
   alias pgush='gpush'
+
+# git pull from origin
 alias gpull='git rev-parse --abbrev-ref HEAD | xargs git pull origin'
   alias gpul='gpull'
   alias pgull='gpull'
   alias pgul='gpull'
+
+# git add all new files
 alias gaddnew='git status --short | grep -v "??" | cut -d " " -f 3 | xargs git add'
   alias gtnew='gaddnew'
   alias gtn='gaddnew'
+
+# shortened git diff
 alias gd='git diff'
+
+# git diff utilizing fzf to search & organize the diff viewing per file
 alias gdd='git status -s | fzf --no-sort --reverse --preview "git diff --color=always {+2}" --preview-window=right:60%:wrap --bind=ctrl-k:preview-up --bind=ctrl-j:preview-down'
 
+# git checkout with fzf to search for branches & automatically update the branch
 alias gcheck="git branch | fzf --preview 'git diff --color=always $(git rev-parse --abbrev-ref HEAD)..{+1}' --preview-window=right:60%:wrap | cut -d'*' -f2 | xargs git checkout && git rev-parse --abbrev-ref HEAD | xargs git pull origin"
 
-gcom () {
+# shortened git commit
+function gcom () {
     git commit -am "$1"
 }
 
-gcp () {
+# git commit & push to origin
+function gcp () {
     git commit -am "$1" && gpush
 }
   alias gpc='gcp'
 
-gclone () {
+# shortened git clone
+function gclone () {
     git clone https://github.com/$1/$2
 }
 
-gsclone () {
+# shortened git clone ssh
+function gsclone () {
     git clone git@github.com:$1/$2
 }
 
 # converts the remote url to https form
-g2https () {
+function g2https () {
     names="$(git remote -v | awk '{print $1}' | uniq)"
     urls="$(git remote -v | awk '{print $2}' | uniq)"
 }
 
 # converts the remote url to ssh form
-g2ssh() {
+function g2ssh() {
     names="$(git remote -v | awk '{print $1}' | uniq)"
     urls="$(git remote -v | awk '{print $2}' | uniq)"
     site="$(echo $urls | cut -d'/' -f3)"
@@ -80,19 +115,22 @@ g2ssh() {
     git remote set-url $names $newurl
 }
 
-preqs () {
+#
+function preqs () {
     grep -i -r --no-filename --include \*.py 'import ' . | \
     sed -E 's/from (.*) import .*/import \1/;s/#.*//;s/import (\S*).*/\1/;s/\..*//' | \
     sort -u >> \
     $1
 }
 
-pyclean () {
+# remove python cached files
+function pyclean () {
         find . -type f -name "*.py[co]" -delete
         find . -type d -name "__pycache__" -delete
 }
 
-srp () {
+#
+function srp () {
     if [ $# -eq 2 ]
     then
         grep -rl "${1}" . | xargs sed -i "s/${1}/${2}/g"
@@ -105,7 +143,8 @@ srp () {
     fi
 }
 
-srd () {
+#
+function srd () {
     if [ $# -eq 1 ]
     then
         grep -rl "${1}" . | xargs sed -i "/${1}/d"
@@ -117,7 +156,8 @@ srd () {
     fi
 }
 
-gfe () {
+#
+function gfe () {
     fileToEdit=$(grep -rn ${1} . | fzf | cut -d ':' -f 1-2)
     fileName=$(echo $fileToEdit | cut -d ':' -f 1)
     lineNumber=$(echo $fileToEdit | cut -d ':' -f 2)
@@ -125,7 +165,7 @@ gfe () {
 }
 
 # find the top N number of commands used in history
-common () {
+function common () {
     if [ $# -eq 1 ]
     then
         # credit to Brandon Wallace for this awk code & piping it to sort & head
@@ -137,11 +177,15 @@ common () {
 }
 
 # aliases for common gh commands
+# github cli create draft pull request
 alias prc='gh pr create -df'
+
+# github cli view pull request in browser
 alias prv='gh pr view -w'
 
 # ssh aliases
-sshgh () {
+# readd ssh key if needed
+function sshgh () {
     if [ $# -eq 2 ]
     then
         ssh-keygen -t ed25519 -b 256 -C "${2}" -f ~/.ssh/chris
@@ -152,11 +196,22 @@ sshgh () {
 alias rssh='eval $(ssh-agent -s) && ssh-add ~/.ssh/cwmccullough'
 
 # growmark specific aliases
-gac () {
+# growmark authenticator
+function gac () {
     if [ $# -eq 2 ]
     then
       powershell.exe gcu gac -$1 -m $2
     else
       echo 'Program needs environment parameter & mfa parameter'
     fi
+}
+
+# list all aliases
+function aliases() {
+    cat ~/.aliases | \
+    grep -B 1 -h -E '(^alias|^function)' --color=never | \
+    sed '/^--$/d' | \
+    sed 's/() {//g' | \
+    sed "s/='[^']*'\|=\"[^\"]*\"//g" | \
+    sed 's/^alias \|^function //g'
 }
