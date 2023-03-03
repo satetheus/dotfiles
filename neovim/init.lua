@@ -68,11 +68,14 @@ vim.api.nvim_set_keymap('c', 'wc', 'w !clip.exe', {noremap = true})
 --reload init.lua
 vim.api.nvim_set_keymap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>', {noremap = true})
 
---gmk auth tool
+---gmk auth tool
 vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
 
 --toggle overlength highlight
 vim.api.nvim_set_keymap('', '<leader>o', ':lua ToggleLineLength()<CR>', {noremap = true, silent = true})
+
+--toggle "paste" setting to maintain spacing
+vim.api.nvim_set_keymap('', '<leader>p', ':set invpaste paste?<CR>', {noremap = true, silent = true})
 
 
 --set sift to be used by :grep
