@@ -71,6 +71,9 @@ vim.api.nvim_set_keymap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR
 --gmk auth tool
 vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
 
+--toggle overlength highlight
+vim.api.nvim_set_keymap('', '<leader>o', ':lua ToggleLineLength()<CR>', {noremap = true, silent = true})
+
 
 --set sift to be used by :grep
 vim.cmd([[
