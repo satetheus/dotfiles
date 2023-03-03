@@ -16,7 +16,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # install homebrew, git, github cli, & neovim if on mac
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    brew install git gh neovim
+    brew install git gh neovim fd-find
 fi
 
 # setup links for config files
@@ -46,7 +46,7 @@ curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install all plugins for vim, then close all open windows
-vim +PlugInstall +qall
+nvim +PlugInstall +qall
 
 # add talon & configuration
 
