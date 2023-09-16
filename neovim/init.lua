@@ -11,18 +11,18 @@ function noremap(mode, mapping, cmd)
 end
 
 --tab settings
-set.tabstop = 8
-set.softtabstop = 4
-set.shiftwidth = 4
-set.expandtab = true
-set.listchars:append({tab = "->"}) --visualize tabs
+vim.o.tabstop = 8
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.opt.listchars:append({tab = "->"}) --visualize tabs
 
 --show whitespace at end of line
-set.listchars:append({trail = "."})
-set.list = true
+vim.opt.listchars:append({trail = "."})
+vim.o.list = true
 
---set.line numbering
-set.number = true
+--set line numbering
+vim.o.number = true
 
 --absolute line numbering on non-active windows, relative on active windows.
 vim.api.nvim_create_augroup('numbertoggle', {clear = true})
@@ -33,13 +33,13 @@ augroup END
 ]])
 
 --search options, ignorecase is necessary for smartcase
-set.ignorecase = true
-set.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 --split settings, not working with vex
-set.splitbelow = true
-set.splitright = true
-set.fillchars:append({vert = ' '})
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.opt.fillchars:append({vert = ' '})
 
 --easier file search
 vim.cmd('cabbrev vex Vexplore!')
