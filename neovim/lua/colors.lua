@@ -1,5 +1,5 @@
 -- Set a flag to track the line length highlighting status
-local line_length_highlighting_on = false
+local line_length_highlighting_on = true
 
 --highlight characters past the 80th column in red if toggled
 function ToggleLineLength()
