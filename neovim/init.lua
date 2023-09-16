@@ -6,8 +6,9 @@ require('plugins')
 require('colors')
 require('filetypes')
 
--- set local variable for simple conversion to lua
-local set = vim.opt
+function noremap(mode, mapping, cmd)
+    vim.api.nvim_set_keymap(mode, mapping, cmd, { noremap = true, silent = true })
+end
 
 --tab settings
 set.tabstop = 8
@@ -49,33 +50,33 @@ vim.cmd('cabbrev sex Sexplore')
 vim.g.netrw_banner = 0
 
 --quality of life key remaps
-vim.api.nvim_set_keymap('', ';', ':', {noremap = true})
-vim.api.nvim_set_keymap('', ':', ';', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
+noremap('', ';', ':')
+noremap('', ':', ';')
+noremap('n', '<C-h>', '<C-w>h')
+noremap('n', '<C-j>', '<C-w>j')
+noremap('n', '<C-k>', '<C-w>k')
+noremap('n', '<C-l>', '<C-w>l')
 
 -- write with sudo trick alias
-vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', {noremap = true})
+noremap('c', 'w!!', 'w !sudo tee > /dev/null %')
 
 --clear highlight
-vim.api.nvim_set_keymap('', '<leader>c', '<cmd>noh<CR>', {noremap = true})
+noremap('', '<leader>c', '<cmd>noh<CR>')
 
 --save to clipboard (wsl only)
-vim.api.nvim_set_keymap('c', 'wc', 'w !clip.exe', {noremap = true})
+noremap('c', 'wc', 'w !clip.exe')
 
 --reload init.lua
-vim.api.nvim_set_keymap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>', {noremap = true})
+noremap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>')
 
 ---gmk auth tool
-vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
+noremap('', '<leader>a', ':vnew\:r !gac ')
 
 --toggle overlength highlight
-vim.api.nvim_set_keymap('', '<leader>o', ':lua ToggleLineLength()<CR>', {noremap = true, silent = true})
+noremap('', '<leader>o', ':lua ToggleLineLength()<CR>')
 
 --toggle "paste" setting to maintain spacing
-vim.api.nvim_set_keymap('', '<leader>p', ':set invpaste paste?<CR>', {noremap = true, silent = true})
+noremap('', '<leader>p', ':set invpaste paste?<CR>')
 
 
 --set sift to be used by :grep
