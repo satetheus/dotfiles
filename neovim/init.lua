@@ -80,13 +80,11 @@ noremap('', '<leader>p', ':set invpaste paste?<CR>')
 
 
 --set sift to be used by :grep
-vim.cmd([[
-if executable("sift")
-    set grepprg=sift\ --ignore-case\ --filename\ -n
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-    command! -nargs=+ Sift execute 'silent grep! <args>' | copen
-    map <leader>s ;Sift 
-endif
-]])
+if vim.fn.executable("sift") then
+    vim.o.grepprg="sift --ignore-case --filename -n"
+    vim.o.grepformat="%f:%l:%c:%m,%f:%l:%m"
+    vim.cmd([[command! -nargs=+ Sift execute 'silent grep! <args>' | copen]])
+    noremap('', '<leader>s', ';Sift')
+end
 
 vim.cmd('let $BASH_ENV = "~/.aliases"')
