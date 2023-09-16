@@ -6,22 +6,23 @@ require('plugins')
 require('colors')
 require('filetypes')
 
--- set local variable for simple conversion to lua
-local set = vim.opt
+function noremap(mode, mapping, cmd)
+    vim.api.nvim_set_keymap(mode, mapping, cmd, { noremap = true, silent = true })
+end
 
 --tab settings
-set.tabstop = 8
-set.softtabstop = 4
-set.shiftwidth = 4
-set.expandtab = true
-set.listchars:append({tab = "->"}) --visualize tabs
+vim.o.tabstop = 8
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.opt.listchars:append({tab = "->"}) --visualize tabs
 
 --show whitespace at end of line
-set.listchars:append({trail = "."})
-set.list = true
+vim.opt.listchars:append({trail = "."})
+vim.o.list = true
 
---set.line numbering
-set.number = true
+--set line numbering
+vim.o.number = true
 
 --absolute line numbering on non-active windows, relative on active windows.
 vim.api.nvim_create_augroup('numbertoggle', {clear = true})
@@ -32,13 +33,13 @@ augroup END
 ]])
 
 --search options, ignorecase is necessary for smartcase
-set.ignorecase = true
-set.smartcase = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 --split settings, not working with vex
-set.splitbelow = true
-set.splitright = true
-set.fillchars:append({vert = ' '})
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.opt.fillchars:append({vert = ' '})
 
 --easier file search
 vim.cmd('cabbrev vex Vexplore!')
@@ -49,43 +50,41 @@ vim.cmd('cabbrev sex Sexplore')
 vim.g.netrw_banner = 0
 
 --quality of life key remaps
-vim.api.nvim_set_keymap('', ';', ':', {noremap = true})
-vim.api.nvim_set_keymap('', ':', ';', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
+noremap('', ';', ':')
+noremap('', ':', ';')
+noremap('n', '<C-h>', '<C-w>h')
+noremap('n', '<C-j>', '<C-w>j')
+noremap('n', '<C-k>', '<C-w>k')
+noremap('n', '<C-l>', '<C-w>l')
 
 -- write with sudo trick alias
-vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', {noremap = true})
+noremap('c', 'w!!', 'w !sudo tee > /dev/null %')
 
 --clear highlight
-vim.api.nvim_set_keymap('', '<leader>c', '<cmd>noh<CR>', {noremap = true})
+noremap('', '<leader>c', '<cmd>noh<CR>')
 
 --save to clipboard (wsl only)
-vim.api.nvim_set_keymap('c', 'wc', 'w !clip.exe', {noremap = true})
+noremap('c', 'wc', 'w !clip.exe')
 
 --reload init.lua
-vim.api.nvim_set_keymap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>', {noremap = true})
+noremap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>')
 
 ---gmk auth tool
-vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
+noremap('', '<leader>a', ':vnew\:r !gac ')
 
 --toggle overlength highlight
-vim.api.nvim_set_keymap('', '<leader>o', ':lua ToggleLineLength()<CR>', {noremap = true, silent = true})
+noremap('', '<leader>o', ':lua ToggleLineLength()<CR>')
 
 --toggle "paste" setting to maintain spacing
-vim.api.nvim_set_keymap('', '<leader>p', ':set invpaste paste?<CR>', {noremap = true, silent = true})
+noremap('', '<leader>p', ':set invpaste paste?<CR>')
 
 
 --set sift to be used by :grep
-vim.cmd([[
-if executable("sift")
-    set grepprg=sift\ --ignore-case\ --filename\ -n
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-    command! -nargs=+ Sift execute 'silent grep! <args>' | copen
-    map <leader>s ;Sift 
-endif
-]])
+if vim.fn.executable("sift") then
+    vim.o.grepprg="sift --ignore-case --filename -n"
+    vim.o.grepformat="%f:%l:%c:%m,%f:%l:%m"
+    vim.cmd([[command! -nargs=+ Sift execute 'silent grep! <args>' | copen]])
+    noremap('', '<leader>s', ';Sift')
+end
 
 vim.cmd('let $BASH_ENV = "~/.aliases"')
