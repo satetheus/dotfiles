@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # update apt & install some needed libraries if on linux
+printf "\n==OS INITIAL SETUP==\n"
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # update system
     sudo apt -qq update
@@ -100,6 +101,7 @@ fi
 
 # install all plugins for vim, then close all open windows
 nvim +PlugInstall +qall
+printf "Neovim plugins updated/installed\n"
 
 # add talon & configuration
 
