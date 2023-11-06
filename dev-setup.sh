@@ -18,6 +18,34 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install git gh neovim fd-find
 fi
 
+printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
+if ! command -v nvim >/dev/null; then
+    printf "Neovim is not installed, building from source\n"
+    # build nvim from source
+    pushd /tmp >/dev/null
+    git clone https://github.com/neovim/neovim --depth 5
+    cd neovim
+    git checkout stable
+    rm -rf build/
+    make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+    make install
+    popd >/dev/null
+
+    # Check if PATH update is already in .bashrc and add it if it's not
+    if ! grep -q 'export PATH="$HOME/neovim/bin:$PATH"' $HOME/.bashrc; then
+                echo 'export PATH="$HOME/neovim/bin:$PATH"' >> $HOME/.bashrc
+    fi
+    export PATH="$HOME/neovim/bin:$PATH"
+
+    printf "Neovim installation complete.\n"
+else
+    printf "Neovim already installed\n"
+fi
+
+nvim --version | head -n 1
+
+
+printf "\n==SYMLINK HOME AND NVIM FILES==\n"
 # setup links for config files
 pushd $HOME
 find "$HOME/dotfiles/homedir" -maxdepth 1 -printf '%P\n' | while read file; do ln -s "$HOME/dotfiles/homedir/$file" "$file"; done
