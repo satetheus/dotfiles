@@ -45,7 +45,6 @@ fi
 
 nvim --version | head -n 1
 
-
 printf "\n==SYMLINK HOME AND NVIM FILES==\n"
 # setup links for config files
 pushd $HOME >/dev/null
