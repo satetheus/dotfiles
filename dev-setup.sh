@@ -2,11 +2,6 @@
 
 # update apt & install some needed libraries if on linux
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # is the adding of this keyserver necessary or a good idea?
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-    sudo add-apt-repository https://cli.github.com/packages
-    sudo add-apt-repository ppa:neovim-ppa/stable
-
     # update system
     sudo apt update
 
