@@ -47,14 +47,16 @@ nvim --version | head -n 1
 
 printf "\n==SYMLINK HOME AND NVIM FILES==\n"
 # setup links for config files
-pushd $HOME
-find "$HOME/dotfiles/homedir" -maxdepth 1 -printf '%P\n' | while read file; do ln -s "$HOME/dotfiles/homedir/$file" "$file"; done
-popd
-mkdir $HOME/.config/nvim
-pushd $HOME/.config/nvim
-find "$HOME/dotfiles/neovim" -maxdepth 1 -printf '%P\n' | while read file; do ln -s "$HOME/dotfiles/neovim/$file" "$file"; done
-popd
+pushd $HOME >/dev/null
+find "$HOME/dotfiles/homedir" -maxdepth 1 -printf '%P\n' | while read file; do if ! [ -e $file ]; then ln -s "$HOME/dotfiles/homedir/$file" "bkp.$file"; fi done
+popd >/dev/null
+mkdir -p $HOME/.config/nvim
+pushd $HOME/.config/nvim >/dev/null
+find "$HOME/dotfiles/neovim" -maxdepth 1 -printf '%P\n' | while read file; do if ! [ -e $file ]; then ln -s "$HOME/dotfiles/neovim/$file" "bkp.$file"; fi done
+popd >/dev/null
+printf "Symlinks created\n"
 
+printf "\n==SET GIT GLOBAL EXCLUDES==\n"
 # setup global git ignore
 git config --global core.excludesfile $HOME/.gitignore_global
 
