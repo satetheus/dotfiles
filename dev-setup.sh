@@ -3,10 +3,14 @@
 # update apt & install some needed libraries if on linux
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # update system
-    sudo apt update
+    sudo apt -qq update
+    sudo apt -qq upgrade -y
 
-    # gh for github cli, neovim, fd-find for fzf, & xdg-utils & x11-xkb-utils for capslock remap
-    sudo apt install gh neovim xdg-utils x11-xkb-utils fd-find -y
+    # gh for github cli, fd-find for fzf, & xdg-utils & x11-xkb-utils for capslock remap
+    sudo apt -qq install gh golang xdg-utils x11-xkb-utils fd-find -y
+    sudo apt-get -qq install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+
+    sudo apt -qq autoremove -y
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     # install homebrew, git, github cli, & neovim if on mac
