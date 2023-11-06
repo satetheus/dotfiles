@@ -61,18 +61,42 @@ printf "\n==SET GIT GLOBAL EXCLUDES==\n"
 git config --global core.excludesfile $HOME/.gitignore_global
 
 # install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
-$HOME/.fzf/install
+printf "\n==FZF GIT INSTALL==\n"
+if ! command -v nvm >/dev/null; then
+    # git repo is cloned here to make key-binding files available
+    git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+    $HOME/.fzf/install
+    printf "fzf has been installed\n"
+else
+    printf "fzf already installed\n"
+fi
+
+fzf --version | head -n 1
 
 # install node.js with version manage & linter
-pushd $HOME/
-git clone https://github.com/nvm-sh/nvm.git .nvm
-. .nvm/install.sh && nvm install node && npm install -g jshint
-popd
+printf "\n==NVM GIT INSTALL==\n"
+if ! command -v nvm >/dev/null; then
+    pushd $HOME/ >/dev/null
+    git clone https://github.com/nvm-sh/nvm.git .nvm
+    . .nvm/install.sh && nvm install node && npm install -g jshint
+    popd >/dev/null
+    printf "nvm has been installed\n"
+else
+    printf "nvm already installed\n"
+fi
+
+nvm --version | head -n 1
 
 # add plugin manager for vim
-curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+printf "\n==VIMPLUG GIT INSTALL==\n"
+if ! [ -e $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
+    # curl may need -k if dealing with harsh firewall
+    curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    printf "Vimplug has been installed\n"
+else
+    printf "Vimplug already installed\n"
+fi
 
 # install all plugins for vim, then close all open windows
 nvim +PlugInstall +qall
@@ -80,11 +104,25 @@ nvim +PlugInstall +qall
 # add talon & configuration
 
 # add sift
-pushd /tmp
-wget https://sift-tool.org/downloads/sift/sift_0.9.0_linux_amd64.tar.gz && \
-tar xzf sift_0.9.0_linux_amd64.tar.gz && \\
-sudo mv sift_0.9.0_linux_amd64/sift /usr/local/bin/
-popd
+printf "\n==SIFT SOURCE INSTALL==\n"
+if ! command -v sift >/dev/null; then
+    pushd /tmp >/dev/null
+    # wget may need --no-check-certificate if dealing with harsh firewall
+    wget https://sift-tool.org/downloads/sift/sift_0.9.0_linux_amd64.tar.gz && \
+    tar xzf sift_0.9.0_linux_amd64.tar.gz && \
+    sudo mv sift_0.9.0_linux_amd64/sift /usr/local/bin/
+    popd >/dev/null
+    printf "sift has been installed\n"
+else
+    printf "sift already installed\n"
+fi
+
+sift --version | head -n 1
+
+printf "\n==CREATE LOCAL VARIABLES FILE==\n"
+touch $HOME/.local_vars
+chmod +x $HOME/.local_vars
+printf "local variables file created. Can be used for sensitive environment variables.\n"
 
 # restart bash
 exec bash -l
