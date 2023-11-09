@@ -63,7 +63,7 @@ git config --global core.excludesfile $HOME/.gitignore_global
 
 # install fzf
 printf "\n==FZF GIT INSTALL==\n"
-if ! command -v nvm >/dev/null; then
+if ! command -v fzf >/dev/null; then
     # git repo is cloned here to make key-binding files available
     git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
     $HOME/.fzf/install
