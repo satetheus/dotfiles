@@ -115,6 +115,11 @@ function g2ssh() {
     git remote set-url $names $newurl
 }
 
+# mkdir + cd
+function mkcd () {
+    mkdir "${1}" && cd "${1}"
+}
+
 #
 function preqs () {
     grep -i -r --no-filename --include \*.py 'import ' . | \
@@ -178,7 +183,7 @@ function common () {
 
 # aliases for common gh commands
 # github cli create draft pull request
-alias prc='gh pr create -df'
+alias prc='gh pr create -f'
 
 # github cli view pull request in browser
 alias prv='gh pr view -w'
