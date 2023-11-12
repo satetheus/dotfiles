@@ -11,6 +11,15 @@ The setup files add some functionality I find important. Things such as a fuzzy 
   - Clone repo & change to repo directory
   - Run `dev-setup.sh`
 
+## The .local_vars file
+This file is for storing more sensitive variables in the local environment while keeping them out of the source control.
+
+Some important variables to define include:
+| Variable    | Description                                                                                           |
+| --------    | -----------                                                                                           |
+| PROJECT_DIR | Used by customized fzf setup to allow fuzzy searching windows files from wsl                          |
+| SSH_ID_FILE | Used to identify the file for ssh to use for git connections, but available for other ssh connections |
+
 ## Dependencies
   - git
   - gh
