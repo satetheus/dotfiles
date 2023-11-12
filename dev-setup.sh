@@ -88,6 +88,10 @@ fi
 
 nvm --version | head -n 1
 
+# install latest lts of node
+printf "\n==NODE LATEST LTS INSTALL==\n"
+nvm install --lts
+
 # add plugin manager for vim
 printf "\n==VIMPLUG GIT INSTALL==\n"
 if ! [ -e $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
