@@ -126,5 +126,8 @@ touch $HOME/.local_vars
 chmod +x $HOME/.local_vars
 printf "local variables file created. Can be used for sensitive environment variables.\n"
 
+# create ssh directory if not exists
+mkdir -p ~/.ssh
+
 # restart bash
 exec bash -l
