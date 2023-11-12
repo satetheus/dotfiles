@@ -7,4 +7,4 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: . ./${PWD}/dev-setup.sh
+      - run: . .${PWD}/dev-setup.sh
