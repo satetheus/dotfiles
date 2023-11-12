@@ -110,12 +110,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# create ssh directory if not exists
-sshdir=~/.ssh
-if [ ! -d "$sshdir" ]; then
-    mkdir ~/.ssh
-fi
-
 # autorun ssh-agent
 # Others have recommended the use of keychain, such as:
 # "eval `keychain --quiet --eval --agents ssh id_rsa`"

@@ -188,12 +188,12 @@ alias prv='gh pr view -w'
 function sshgh () {
     if [ $# -eq 2 ]
     then
-        ssh-keygen -t ed25519 -b 256 -C "${2}" -f ~/.ssh/chris
+        ssh-keygen -t ed25519 -b 256 -C "${2}" -f $SSH_ID_FILE
     fi
 }
 
 # ssh restart
-alias rssh='eval $(ssh-agent -s) && ssh-add ~/.ssh/cwmccullough'
+alias rssh='eval $(ssh-agent -s) && ssh-add $SSH_ID_FILE'
 
 # growmark specific aliases
 # growmark authenticator
