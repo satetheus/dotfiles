@@ -9,6 +9,9 @@ require('filetypes')
 -- set local variable for simple conversion to lua
 local set = vim.opt
 
+--disable mouse
+vim.cmd([[set mouse=]])
+
 --tab settings
 set.tabstop = 8
 set.softtabstop = 4
