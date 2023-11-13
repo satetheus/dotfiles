@@ -8,6 +8,6 @@ jobs:
 
     steps:
       - name: print directory
-      - run: ls -al
+        run: ls -al
       - name: run setup
-      - run: . .${PWD}/dev-setup.sh
+        run: . .${PWD}/dev-setup.sh
