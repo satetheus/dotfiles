@@ -7,4 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: print directory
+      - run: ls -al
+      - name: run setup
       - run: . .${PWD}/dev-setup.sh
