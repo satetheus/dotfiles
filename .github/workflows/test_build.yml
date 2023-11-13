@@ -8,6 +8,9 @@ jobs:
 
     steps:
       - name: print directory
-        run: ls -al
+        run: |
+          ls -al
+          ls -al ${PWD}
+          ls -al ${GITHUB_WORKSPACE}
       - name: run setup
         run: . .${PWD}/dev-setup.sh
