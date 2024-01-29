@@ -19,6 +19,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install git gh neovim fd-find
 fi
 
+printf "\n==INSTALL RUST==\n"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
 if ! command -v nvim >/dev/null; then
     printf "Neovim is not installed, building from source\n"
