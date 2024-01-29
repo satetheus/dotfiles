@@ -177,8 +177,11 @@ function common () {
 }
 
 # aliases for common gh commands
+# github cli create non-draft pull request (needed for repos that don't support drafts
+alias prc='gh pr create -f'
+
 # github cli create draft pull request
-alias prc='gh pr create -df'
+alias prdc='gh pr create -df'
 
 # github cli view pull request in browser
 alias prv='gh pr view -w'
