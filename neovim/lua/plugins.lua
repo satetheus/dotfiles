@@ -10,12 +10,13 @@ endif
 --install plugins
 local Plug = vim.fn['plug#']
 vim.call('plug#begin', '~/.vim/plugged') --specify plugin directory
-    Plug 'Sirver/ultisnips' --snippet plugin
-    Plug 'lifepillar/vim-gruvbox8' --updated colorscheme
-    Plug 'vimwiki/vimwiki' --vim wiki
+    Plug('Sirver/ultisnips') --snippet plugin
+    Plug('lifepillar/vim-gruvbox8') --updated colorscheme
+    Plug('vimwiki/vimwiki') --vim wiki
     Plug('pangloss/vim-javascript', {['for'] = 'javascript'}) --JavaScript support
     Plug('leafgarland/typescript-vim', {['for'] = 'typescript'}) --Typescript syntax
     Plug('neoclide/coc.nvim', {branch = 'release'})
+    Plug('junegunn/fzf.vim')
 vim.call('plug#end')
 
 --Ultisnip options
