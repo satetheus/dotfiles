@@ -20,7 +20,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 printf "\n==INSTALL RUST==\n"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+if ! command -v cargo >/dev/null; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+
+    printf "\n==INSTALL BINSTALL FOR CARGO==\n"
+    cargo install cargo-binstall
+fi
 
 printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
 if ! command -v nvim >/dev/null; then
