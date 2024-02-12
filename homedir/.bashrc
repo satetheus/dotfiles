@@ -153,6 +153,12 @@ set keymap vi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# add nvim to path
+PATH="$PATH:~/.local/share/bob/nvim-bin"
+
+# activate mise
+eval "$(~/.cargo/bin/mise activate bash)"
+
 # this is somehow important for fzf. Don't touch until you know what it does.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
@@ -174,6 +180,6 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 # is this necessary, considering not many machines in use are running terraform?
 complete -C /usr/bin/terraform terraform
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# source for rust
+. "$HOME/.cargo/env"
+

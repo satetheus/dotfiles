@@ -81,13 +81,13 @@ vim.api.nvim_set_keymap('', '<leader>o', ':lua ToggleLineLength()<CR>', {noremap
 vim.api.nvim_set_keymap('', '<leader>p', ':set invpaste paste?<CR>', {noremap = true, silent = true})
 
 
---set sift to be used by :grep
+--set ripgrep to be used by :grep
 vim.cmd([[
-if executable("sift")
-    set grepprg=sift\ --ignore-case\ --filename\ -n
+if executable("rg")
+    set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
-    command! -nargs=+ Sift execute 'silent grep! <args>' | copen
-    map <leader>s ;Sift 
+    command! -nargs=+ Rg execute 'silent grep! <args>' | copen
+    map <leader>s ;Rg 
 endif
 ]])
 
