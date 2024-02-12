@@ -10,6 +10,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     # gh for github cli, fd-find for fzf, & xdg-utils & x11-xkb-utils for capslock remap
     sudo apt -qq install gh golang xdg-utils x11-xkb-utils fd-find -y
     sudo apt-get -qq install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+    # used for ncspot & other cargo packages
+    sudo apt -qq install -y libdbus-1-dev libncursesw5-dev libpulse-dev libssl-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
 
     sudo apt -qq autoremove -y
 
@@ -21,11 +23,13 @@ fi
 
 printf "\n==INSTALL RUST==\n"
 if ! command -v cargo >/dev/null; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -y
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
     printf "\n==INSTALL BINSTALL FOR CARGO==\n"
-    cargo install cargo-binstall
+    cargo install cargo-binstall -y
 fi
+
+rustc --version
 
 printf "\n==INSTALL PACKAGES FROM CARGO==\n"
 cargo binstall nu ripgrep bob-nvim rtx-cli -y
