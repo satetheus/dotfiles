@@ -35,28 +35,7 @@ printf "\n==INSTALL PACKAGES FROM CARGO==\n"
 cargo binstall nu ripgrep bob-nvim rtx-cli -y
 
 printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
-if ! command -v nvim >/dev/null; then
-    printf "Neovim is not installed, building from source\n"
-    # build nvim from source
-    pushd /tmp >/dev/null
-    git clone https://github.com/neovim/neovim --depth 5
-    cd neovim
-    git checkout stable
-    rm -rf build/
-    make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-    make install
-    popd >/dev/null
-
-    # Check if PATH update is already in .bashrc and add it if it's not
-    if ! grep -q 'export PATH="$HOME/neovim/bin:$PATH"' $HOME/.bashrc; then
-                echo 'export PATH="$HOME/neovim/bin:$PATH"' >> $HOME/.bashrc
-    fi
-    export PATH="$HOME/neovim/bin:$PATH"
-
-    printf "Neovim installation complete.\n"
-else
-    printf "Neovim already installed\n"
-fi
+bob use latest
 
 nvim --version | head -n 1
 
@@ -92,6 +71,14 @@ fzf --version | head -n 1
 printf "\n==NODE LATEST LTS INSTALL==\n"
 rtx install node@lts
 rtx use --global node@lts
+
+# install python using rtx-cli (mise?)
+printf "\n==PYTHON INSTALL==\n"
+rtx install python@latest
+rtx use --global python@latest
+
+# this is needed to make sure nvim has access to a python provider
+python3 -m pip install --user --upgrade pynvim
 
 # add plugin manager for vim
 printf "\n==VIMPLUG GIT INSTALL==\n"
