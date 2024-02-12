@@ -156,8 +156,8 @@ export EDITOR="$VISUAL"
 # add nvim to path
 PATH="$PATH:~/.local/share/bob/nvim-bin"
 
-# activate rtx
-eval "$(rtx activate bash)"
+# activate mise
+eval "$(~/.cargo/bin/mise activate bash)"
 
 # this is somehow important for fzf. Don't touch until you know what it does.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

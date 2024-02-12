@@ -32,7 +32,7 @@ fi
 rustc --version
 
 printf "\n==INSTALL PACKAGES FROM CARGO==\n"
-cargo binstall nu ripgrep bob-nvim rtx-cli -y
+cargo binstall nu ripgrep bob-nvim mise -y
 
 printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
 bob use latest
