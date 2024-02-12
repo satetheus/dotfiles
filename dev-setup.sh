@@ -69,13 +69,13 @@ fzf --version | head -n 1
 
 # install latest lts of node
 printf "\n==NODE LATEST LTS INSTALL==\n"
-rtx install node@lts
-rtx use --global node@lts
+mise install node@lts
+mise use --global node@lts
 
-# install python using rtx-cli (mise?)
+# install python using mise
 printf "\n==PYTHON INSTALL==\n"
-rtx install python@latest
-rtx use --global python@latest
+mise install python@latest
+mise use --global python@latest
 
 # this is needed to make sure nvim has access to a python provider
 python3 -m pip install --user --upgrade pynvim
