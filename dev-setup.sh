@@ -27,6 +27,9 @@ if ! command -v cargo >/dev/null; then
     cargo install cargo-binstall
 fi
 
+printf "\n==INSTALL PACKAGES FROM CARGO==\n"
+cargo binstall nu ripgrep bob-nvim rtx-cli -y
+
 printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
 if ! command -v nvim >/dev/null; then
     printf "Neovim is not installed, building from source\n"
@@ -81,23 +84,10 @@ fi
 
 fzf --version | head -n 1
 
-# install node.js with version manage & linter
-printf "\n==NVM GIT INSTALL==\n"
-if ! command -v nvm >/dev/null; then
-    pushd $HOME/ >/dev/null
-    git clone https://github.com/nvm-sh/nvm.git .nvm
-    . .nvm/install.sh && nvm install node && npm install -g jshint
-    popd >/dev/null
-    printf "nvm has been installed\n"
-else
-    printf "nvm already installed\n"
-fi
-
-nvm --version | head -n 1
-
 # install latest lts of node
 printf "\n==NODE LATEST LTS INSTALL==\n"
-nvm install --lts
+rtx install node@lts
+rtx use --global node@lts
 
 # add plugin manager for vim
 printf "\n==VIMPLUG GIT INSTALL==\n"
