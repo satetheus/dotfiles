@@ -86,8 +86,8 @@ vim.cmd([[
 if executable("rg")
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
-    command! -nargs=+ rg execute 'silent grep! <args>' | copen
-    map <leader>s ;rg 
+    command! -nargs=+ Rg execute 'silent grep! <args>' | copen
+    map <leader>s ;Rg 
 endif
 ]])
 

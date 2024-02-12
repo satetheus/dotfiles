@@ -153,8 +153,8 @@ set keymap vi
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# source for rust
-source "$HOME/.cargo/env"
+# add nvim to path
+PATH="$PATH:~/.local/share/bob/nvim-bin"
 
 # activate rtx
 eval "$(rtx activate bash)"
@@ -179,3 +179,7 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 
 # is this necessary, considering not many machines in use are running terraform?
 complete -C /usr/bin/terraform terraform
+
+# source for rust
+. "$HOME/.cargo/env"
+
