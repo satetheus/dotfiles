@@ -106,22 +106,6 @@ printf "Neovim plugins updated/installed\n"
 
 # add talon & configuration
 
-# add sift
-printf "\n==SIFT SOURCE INSTALL==\n"
-if ! command -v sift >/dev/null; then
-    pushd /tmp >/dev/null
-    # wget may need --no-check-certificate if dealing with harsh firewall
-    wget https://sift-tool.org/downloads/sift/sift_0.9.0_linux_amd64.tar.gz && \
-    tar xzf sift_0.9.0_linux_amd64.tar.gz && \
-    sudo mv sift_0.9.0_linux_amd64/sift /usr/local/bin/
-    popd >/dev/null
-    printf "sift has been installed\n"
-else
-    printf "sift already installed\n"
-fi
-
-sift --version | head -n 1
-
 printf "\n==CREATE LOCAL VARIABLES FILE==\n"
 touch $HOME/.local_vars
 chmod +x $HOME/.local_vars
