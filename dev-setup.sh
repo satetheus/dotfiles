@@ -8,7 +8,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo apt -qq upgrade -y
 
     # gh for github cli, fd-find for fzf, & xdg-utils & x11-xkb-utils for capslock remap
-    sudo apt -qq install gh golang xdg-utils x11-xkb-utils fd-find -y
+    sudo apt -qq install gh xdg-utils x11-xkb-utils fd-find -y
     sudo apt-get -qq install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
     # used for ncspot & other cargo packages
     sudo apt -qq install -y libdbus-1-dev libncursesw5-dev libpulse-dev libssl-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
@@ -34,7 +34,7 @@ cargo install cargo-binstall -y
 printf "\n==INSTALL PACKAGES FROM CARGO==\n"
 cargo binstall nu ripgrep zellij bob-nvim mise bacon -y
 
-printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
+printf "\n==INSTALL NEOVIM==\n"
 bob use latest
 
 nvim --version | head -n 1
