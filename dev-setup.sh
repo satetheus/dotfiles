@@ -24,15 +24,15 @@ fi
 printf "\n==INSTALL RUST==\n"
 if ! command -v cargo >/dev/null; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-
-    printf "\n==INSTALL BINSTALL FOR CARGO==\n"
-    cargo install cargo-binstall -y
 fi
 
 rustc --version
 
+printf "\n==INSTALL BINSTALL FOR CARGO==\n"
+cargo install cargo-binstall -y
+
 printf "\n==INSTALL PACKAGES FROM CARGO==\n"
-cargo binstall nu ripgrep bob-nvim mise -y
+cargo binstall nu ripgrep zellij bob-nvim mise -y
 
 printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
 bob use latest
@@ -94,8 +94,6 @@ fi
 # install all plugins for vim, then close all open windows
 nvim +PlugInstall +qall
 printf "Neovim plugins updated/installed\n"
-
-# add talon & configuration
 
 printf "\n==CREATE LOCAL VARIABLES FILE==\n"
 touch $HOME/.local_vars
