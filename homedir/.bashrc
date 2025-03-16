@@ -150,36 +150,44 @@ set keymap vi
 # WARNING: this may cause issues on low-baud modems or when addressing slow
 # serial lines. See:
 # https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # add nvim to path
 PATH="$PATH:~/.local/share/bob/nvim-bin"
 
-# activate mise
-eval "$(~/.cargo/bin/mise activate bash)"
 
-# this is somehow important for fzf. Don't touch until you know what it does.
+# source for rust if exists
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+
+# activate mise if exists
+[ -f "$HOME/.cargo/bin/mise" ] && eval "$(~/.cargo/bin/mise activate bash)"
+
+# sources bash fzf files if exists. Important for linux systems
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# sets up proper configuration for fzf on nixos, DO NOT REMOVE
+if command -v fzf-share >/dev/null; then
+    source "$(fzf-share)/key-bindings.bash"
+    source "$(fzf-share)/completion.bash"
+fi
 
 # add local variables from another file
 . $HOME/.local_vars
 
 # set fzf to use fd
-export FZF_DEFAULT_COMMAND="fdfind . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+if ! command -v fdfind > /dev/null; then
+    export FZF_DEFAULT_COMMAND="fd . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
 
-# set alt-c to search all directories
-export FZF_ALT_C_COMMAND="fdfind . $HOME $PROJECT_DIR --type d -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+    # set alt-c to search all directories
+    export FZF_ALT_C_COMMAND="fd . $HOME $PROJECT_DIR --type d -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+else
+    export FZF_DEFAULT_COMMAND="fdfind . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
 
-# remaps capslock to escape on linux
-setxkbmap -option caps:escape
+    # set alt-c to search all directories
+    export FZF_ALT_C_COMMAND="fdfind . $HOME $PROJECT_DIR --type d -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+fi
 
 # add timestamp to bash history
 export HISTTIMEFORMAT="%d/%m/%y %T "
-
-# is this necessary, considering not many machines in use are running terraform?
-complete -C /usr/bin/terraform terraform
-
-# source for rust
-. "$HOME/.cargo/env"
 
