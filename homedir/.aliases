@@ -188,7 +188,7 @@ alias prv='gh pr view -w'
 function sshgh () {
     if [ $# -eq 2 ]
     then
-        ssh-keygen -t ed25519 -b 256 -C "${2}" -f $SSH_ID_FILE
+        ssh-keygen -t ed25519 -b 256 -C "${2}" -f "${1}"
     fi
 }
 

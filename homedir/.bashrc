@@ -150,29 +150,36 @@ set keymap vi
 # WARNING: this may cause issues on low-baud modems or when addressing slow
 # serial lines. See:
 # https://unix.stackexchange.com/questions/4859/visual-vs-editor-what-s-the-difference
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
-# this is somehow important for fzf. Don't touch until you know what it does.
+# this is important for nix installations
+if command -v fzf-share >/dev/null; then
+    source "$(fzf-share)/key-bindings.bash"
+    source "$(fzf-share)/completion.bash"
+fi
+
+# checks for file that defines the fzf installation location & adds it to PATH
+# unecessary for nix installations, but integral for other *nix systems.
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # add local variables from another file
 . $HOME/.local_vars
 
+# doesn't work
+# some systems have fd as just fd, rather than fdfind
+#if ! command -v fdfind >/dev/null; then
+    #alias fdfind=fd
+#fi
+
 # set fzf to use fd
-export FZF_DEFAULT_COMMAND="fdfind . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+export FZF_DEFAULT_COMMAND="fd . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
 
 # set alt-c to search all directories
-export FZF_ALT_C_COMMAND="fdfind . $HOME $PROJECT_DIR --type d -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
-
-# remaps capslock to escape on linux
-setxkbmap -option caps:escape
+export FZF_ALT_C_COMMAND="fd . $HOME $PROJECT_DIR --type d -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
 
 # add timestamp to bash history
 export HISTTIMEFORMAT="%d/%m/%y %T "
-
-# is this necessary, considering not many machines in use are running terraform?
-complete -C /usr/bin/terraform terraform
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
