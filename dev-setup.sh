@@ -32,7 +32,7 @@ printf "\n==INSTALL BINSTALL FOR CARGO==\n"
 cargo install cargo-binstall -y
 
 printf "\n==INSTALL PACKAGES FROM CARGO==\n"
-cargo binstall nu ripgrep zellij bob-nvim mise -y
+cargo binstall nu ripgrep zellij bob-nvim mise bacon -y
 
 printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
 bob use latest
