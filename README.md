@@ -1,6 +1,6 @@
 # dotfiles
 My dot files. Includes various aliases for commands I commonly use, bash & vim configurations, setup scripts to initialize/setup machines I use, & some git setup.
-The setup files add some functionality I find important. Things such as a fuzzy finder [(fzf)](https://github.com/junegunn/fzf), a faster grep [(sift)](https://github.com/svent/sift), & voice to text program for people who have paper-mache wrists like me [(talon voice)](https://talonvoice.com/).
+The setup files add some functionality I find important. Things such as a fuzzy finder [(fzf)](https://github.com/junegunn/fzf), a faster grep [(ripgrep)](https://github.com/BurntSushi/ripgrep), my preferred editor [(neovim)](https://neovim.io/), & making sure recent & stable version of the languages I use are available.
 
 ## Install
 ### Windows
@@ -24,7 +24,7 @@ Some important variables to define include:
   - git
   - gh
   - neovim
-  - sift
+  - ripgrep
   - fzf
   - fdfind
   - homebrew (if on mac)

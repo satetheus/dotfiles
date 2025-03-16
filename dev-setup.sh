@@ -8,8 +8,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo apt -qq upgrade -y
 
     # gh for github cli, fd-find for fzf, & xdg-utils & x11-xkb-utils for capslock remap
-    sudo apt -qq install gh golang xdg-utils x11-xkb-utils fd-find -y
+    sudo apt -qq install gh xdg-utils x11-xkb-utils fd-find -y
     sudo apt-get -qq install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+    # used for ncspot & other cargo packages
+    sudo apt -qq install -y libdbus-1-dev libncursesw5-dev libpulse-dev libssl-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
 
     sudo apt -qq autoremove -y
 
@@ -19,32 +21,23 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     brew install git gh neovim fd-find
 fi
 
-printf "\n==INSTALL NEOVIM FROM SOURCE==\n"
-if ! command -v nvim >/dev/null; then
-    printf "Neovim is not installed, building from source\n"
-    # build nvim from source
-    pushd /tmp >/dev/null
-    git clone https://github.com/neovim/neovim --depth 5
-    cd neovim
-    git checkout stable
-    rm -rf build/
-    make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-    make install
-    popd >/dev/null
-
-    # Check if PATH update is already in .bashrc and add it if it's not
-    if ! grep -q 'export PATH="$HOME/neovim/bin:$PATH"' $HOME/.bashrc; then
-                echo 'export PATH="$HOME/neovim/bin:$PATH"' >> $HOME/.bashrc
-    fi
-    export PATH="$HOME/neovim/bin:$PATH"
-
-    printf "Neovim installation complete.\n"
-else
-    printf "Neovim already installed\n"
+printf "\n==INSTALL RUST==\n"
+if ! command -v cargo >/dev/null; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 fi
 
-nvim --version | head -n 1
+rustc --version
 
+printf "\n==INSTALL BINSTALL FOR CARGO==\n"
+cargo install cargo-binstall -y
+
+printf "\n==INSTALL PACKAGES FROM CARGO==\n"
+cargo binstall nu ripgrep zellij bob-nvim mise bacon -y
+
+printf "\n==INSTALL NEOVIM==\n"
+bob use latest
+
+nvim --version | head -n 1
 
 printf "\n==SYMLINK HOME AND NVIM FILES==\n"
 # setup links for config files
@@ -74,23 +67,18 @@ fi
 
 fzf --version | head -n 1
 
-# install node.js with version manage & linter
-printf "\n==NVM GIT INSTALL==\n"
-if ! command -v nvm >/dev/null; then
-    pushd $HOME/ >/dev/null
-    git clone https://github.com/nvm-sh/nvm.git .nvm
-    . .nvm/install.sh && nvm install node && npm install -g jshint
-    popd >/dev/null
-    printf "nvm has been installed\n"
-else
-    printf "nvm already installed\n"
-fi
-
-nvm --version | head -n 1
-
 # install latest lts of node
 printf "\n==NODE LATEST LTS INSTALL==\n"
-nvm install --lts
+mise install node@lts
+mise use --global node@lts
+
+# install python using mise
+printf "\n==PYTHON INSTALL==\n"
+mise install python@latest
+mise use --global python@latest
+
+# this is needed to make sure nvim has access to a python provider
+python3 -m pip install --user --upgrade pynvim
 
 # add plugin manager for vim
 printf "\n==VIMPLUG GIT INSTALL==\n"
@@ -106,24 +94,6 @@ fi
 # install all plugins for vim, then close all open windows
 nvim +PlugInstall +qall
 printf "Neovim plugins updated/installed\n"
-
-# add talon & configuration
-
-# add sift
-printf "\n==SIFT SOURCE INSTALL==\n"
-if ! command -v sift >/dev/null; then
-    pushd /tmp >/dev/null
-    # wget may need --no-check-certificate if dealing with harsh firewall
-    wget https://sift-tool.org/downloads/sift/sift_0.9.0_linux_amd64.tar.gz && \
-    tar xzf sift_0.9.0_linux_amd64.tar.gz && \
-    sudo mv sift_0.9.0_linux_amd64/sift /usr/local/bin/
-    popd >/dev/null
-    printf "sift has been installed\n"
-else
-    printf "sift already installed\n"
-fi
-
-sift --version | head -n 1
 
 printf "\n==CREATE LOCAL VARIABLES FILE==\n"
 touch $HOME/.local_vars
