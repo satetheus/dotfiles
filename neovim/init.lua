@@ -38,10 +38,14 @@ augroup END
 set.ignorecase = true
 set.smartcase = true
 
---split settings, not working with vex
+--split settings
 set.splitbelow = true
 set.splitright = true
 set.fillchars:append({vert = ' '})
+
+--ctags configuration
+--this is so ctags files can be in the .git directory to avoid commiting
+vim.opt.tags:prepend('.git/tags;~')
 
 --easier file search
 vim.cmd('cabbrev vex Vexplore!')
