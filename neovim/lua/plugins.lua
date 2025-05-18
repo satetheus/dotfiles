@@ -23,4 +23,4 @@ vim.g.UltiSnipsEditSplit = "vertical"
 vim.cmd [[
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 ]]
-vim.cmd('cabbrev snip UltiSnipsEdit')
+vim.keymap.set('c', 'snip', 'UltiSnipsEdit')

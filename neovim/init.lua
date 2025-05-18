@@ -47,41 +47,41 @@ set.fillchars:append({vert = ' '})
 vim.opt.tags:prepend('.git/tags;~')
 
 --easier file search
-vim.cmd('cabbrev vex Vexplore!')
-vim.cmd('cabbrev ex Explore')
-vim.cmd('cabbrev sex Sexplore')
+vim.keymap.set('c', 'vex', 'Vexplore!')
+vim.keymap.set('c', 'ex', 'Explore')
+vim.keymap.set('c', 'sex', 'Sexplore')
 
 --remove banner in file explorer
 vim.g.netrw_banner = 0
 
 --quality of life key remaps
-vim.api.nvim_set_keymap('', ';', ':', {noremap = true})
-vim.api.nvim_set_keymap('', ':', ';', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
+vim.keymap.set('', ';', ':')
+vim.keymap.set('', ':', ';')
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- write with sudo trick alias
-vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', {noremap = true})
+vim.keymap.set('c', 'w!!', 'w !sudo tee > /dev/null %')
 
 --clear highlight
-vim.api.nvim_set_keymap('', '<leader>c', '<cmd>noh<CR>', {noremap = true})
+vim.keymap.set('', '<leader>c', '<cmd>noh<CR>')
 
 --save to clipboard (wsl only)
-vim.api.nvim_set_keymap('c', 'wc', 'w !clip.exe', {noremap = true})
+vim.keymap.set('c', 'wc', 'w !clip.exe')
 
 --reload init.lua
-vim.api.nvim_set_keymap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>', {noremap = true})
+vim.keymap.set('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>')
 
 ---gmk auth tool
-vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
+vim.keymap.set('', '<leader>a', ':vnew\:r !gac ')
 
 --toggle overlength highlight
-vim.api.nvim_set_keymap('', '<leader>o', ':lua ToggleLineLength()<CR>', {noremap = true, silent = true})
+vim.keymap.set('', '<leader>o', ':lua ToggleLineLength()<CR>', {silent = true})
 
 --toggle "paste" setting to maintain spacing
-vim.api.nvim_set_keymap('', '<leader>p', ':set invpaste paste?<CR>', {noremap = true, silent = true})
+vim.keymap.set('', '<leader>p', ':set invpaste paste?<CR>', {silent = true})
 
 
 --set ripgrep to be used by :grep
