@@ -12,6 +12,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo apt-get -qq install -y ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
     # used for ncspot & other cargo packages
     sudo apt -qq install -y libdbus-1-dev libncursesw5-dev libpulse-dev libssl-dev libxcb1-dev libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev
+    # linting programs. Cargo is included, but installed using rustup
+    sudo apt -qq install -y pylint eslint lua shellcheck
 
     sudo apt -qq autoremove -y
 

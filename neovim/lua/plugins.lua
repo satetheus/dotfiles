@@ -13,10 +13,6 @@ vim.call('plug#begin', '~/.vim/plugged') --specify plugin directory
     Plug 'Sirver/ultisnips' --snippet plugin
     Plug 'lifepillar/vim-gruvbox8' --updated colorscheme
     Plug 'vimwiki/vimwiki' --vim wiki
-    Plug('pangloss/vim-javascript', {['for'] = 'javascript'}) --JavaScript support
-    Plug('leafgarland/typescript-vim', {['for'] = 'typescript'}) --Typescript syntax
-    Plug('neoclide/coc.nvim', {branch = 'release'})
-    Plug('github/copilot.vim')
 vim.call('plug#end')
 
 --Ultisnip options
@@ -28,9 +24,3 @@ vim.cmd [[
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 ]]
 vim.cmd('cabbrev snip UltiSnipsEdit')
-
---CoC options
-vim.cmd [[
-let g:coc_global_extensions=['coc-tsserver']
-]]
-vim.g.coc_disable_startup_warning = 1
