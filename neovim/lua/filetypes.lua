@@ -25,4 +25,7 @@ autocmd('BufWritePost', {group='linting', pattern='*.sh', command=make_cmd})
 
 autocmd('FileType', {group='linting', pattern='rust', command='compiler cargo'})
 autocmd('BufWritePost', {group='linting', pattern='*.rs', command=make_cmd})
-autocmd('QuickFixCmdPost', {group='linting', command='[^l]* cwindow'})
+
+autocmd('FileType', {group='linting', pattern='lua', command='setlocal makeprg="luac -p % | setlocal errorformat=%m"'})
+autocmd('BufWritePost', {group='linting', pattern='*.lua', command=make_cmd})
+autocmd('QuickFixCmdPost', {group='linting', pattern='[^l]*', command='cwindow'})
