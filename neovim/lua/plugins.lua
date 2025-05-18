@@ -16,7 +16,6 @@ vim.call('plug#begin', '~/.vim/plugged') --specify plugin directory
     Plug('pangloss/vim-javascript', {['for'] = 'javascript'}) --JavaScript support
     Plug('leafgarland/typescript-vim', {['for'] = 'typescript'}) --Typescript syntax
     Plug('neoclide/coc.nvim', {branch = 'release'})
-    Plug('github/copilot.vim')
 vim.call('plug#end')
 
 --Ultisnip options

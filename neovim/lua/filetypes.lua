@@ -8,3 +8,22 @@ augroup templates
   autocmd BufNewFile *.js 0r ~/.config/nvim/templates/skeleton.js
 augroup END
 ]])
+
+vim.cmd([[
+augroup linting
+  autocmd!
+  autocmd FileType python compiler pylint
+  autocmd BufWritePost *.py silent make <afile> | silent redraw!
+
+  autocmd FileType javascript compiler eslint
+  autocmd BufWritePost *.js silent make <afile> | silent redraw!
+
+  autocmd FileType bash compiler shellcheck
+  autocmd BufWritePost *.sh silent make <afile> | silent redraw!
+
+  autocmd FileType rust compiler cargo
+  autocmd BufWritePost *.rs silent make <afile> | silent redraw!
+
+  autocmd QuickFixCmdPost [^l]* cwindow
+augroup END
+]])
