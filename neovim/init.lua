@@ -8,6 +8,8 @@ require('filetypes')
 
 -- set local variable for simple conversion to lua
 local set = vim.opt
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
 --disable mouse
 vim.cmd([[set mouse=]])
@@ -27,12 +29,9 @@ set.list = true
 set.number = true
 
 --absolute line numbering on non-active windows, relative on active windows.
-vim.api.nvim_create_augroup('numbertoggle', {clear = true})
-vim.cmd([[
-  autocmd BufEnter,FocusGained * set relativenumber
-  autocmd BufLeave,FocusLost   * set norelativenumber
-augroup END
-]])
+augroup('numbertoggle', {clear = true})
+autocmd({'BufEnter','FocusGained'}, {group='numbertoggle', command='set relativenumber'})
+autocmd({'BufLeave','FocusLost'}, {group='numbertoggle', command='set norelativenumber'})
 
 --search options, ignorecase is necessary for smartcase
 set.ignorecase = true
