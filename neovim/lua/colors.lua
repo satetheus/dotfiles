@@ -39,9 +39,9 @@ end
 
 --enact the custom highlights & colors
 vim.api.nvim_create_augroup('CustomColors', {clear = true})
-vim.api.nvim_create_autocmd({"Colorscheme"}, {group = 'CustomColors', pattern = {'*'}, callback = ToggleLineLength})
-vim.api.nvim_create_autocmd({"Colorscheme"}, {group = 'CustomColors', pattern = {'*'}, callback = OtherChars})
-vim.api.nvim_create_autocmd({"Colorscheme"}, {group = 'CustomColors', pattern = {'*'}, callback = Transparent})
+vim.api.nvim_create_autocmd('Colorscheme', {group = 'CustomColors', callback = ToggleLineLength})
+vim.api.nvim_create_autocmd('Colorscheme', {group = 'CustomColors', callback = OtherChars})
+vim.api.nvim_create_autocmd('Colorscheme', {group = 'CustomColors', callback = Transparent})
 
 --theme
 vim.cmd('colorscheme gruvbox8')
