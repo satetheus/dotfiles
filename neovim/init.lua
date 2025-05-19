@@ -8,9 +8,11 @@ require('filetypes')
 
 -- set local variable for simple conversion to lua
 local set = vim.opt
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
 
 --disable mouse
-vim.cmd([[set mouse=]])
+vim.opt.mouse=""
 
 --tab settings
 set.tabstop = 8
@@ -27,12 +29,9 @@ set.list = true
 set.number = true
 
 --absolute line numbering on non-active windows, relative on active windows.
-vim.api.nvim_create_augroup('numbertoggle', {clear = true})
-vim.cmd([[
-  autocmd BufEnter,FocusGained * set relativenumber
-  autocmd BufLeave,FocusLost   * set norelativenumber
-augroup END
-]])
+augroup('numbertoggle', {clear = true})
+autocmd({'BufEnter','FocusGained'}, {group='numbertoggle', command='set relativenumber'})
+autocmd({'BufLeave','FocusLost'}, {group='numbertoggle', command='set norelativenumber'})
 
 --search options, ignorecase is necessary for smartcase
 set.ignorecase = true
@@ -48,51 +47,46 @@ set.fillchars:append({vert = ' '})
 vim.opt.tags:prepend('.git/tags;~')
 
 --easier file search
-vim.cmd('cabbrev vex Vexplore!')
-vim.cmd('cabbrev ex Explore')
-vim.cmd('cabbrev sex Sexplore')
+vim.keymap.set('c', 'vex', 'Vexplore!')
+vim.keymap.set('c', 'ex', 'Explore')
+vim.keymap.set('c', 'sex', 'Sexplore')
 
 --remove banner in file explorer
 vim.g.netrw_banner = 0
 
 --quality of life key remaps
-vim.api.nvim_set_keymap('', ';', ':', {noremap = true})
-vim.api.nvim_set_keymap('', ':', ';', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
+vim.keymap.set('', ';', ':')
+vim.keymap.set('', ':', ';')
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
 
 -- write with sudo trick alias
-vim.api.nvim_set_keymap('c', 'w!!', 'w !sudo tee > /dev/null %', {noremap = true})
+vim.keymap.set('c', 'w!!', 'w !sudo tee > /dev/null %')
 
 --clear highlight
-vim.api.nvim_set_keymap('', '<leader>c', '<cmd>noh<CR>', {noremap = true})
+vim.keymap.set('', '<leader>c', '<cmd>noh<CR>')
 
 --save to clipboard (wsl only)
-vim.api.nvim_set_keymap('c', 'wc', 'w !clip.exe', {noremap = true})
+vim.keymap.set('c', 'wc', 'w !clip.exe')
 
 --reload init.lua
-vim.api.nvim_set_keymap('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>', {noremap = true})
-
----gmk auth tool
-vim.api.nvim_set_keymap('', '<leader>a', ':vnew\:r !gac ', {noremap = true})
+vim.keymap.set('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>')
 
 --toggle overlength highlight
-vim.api.nvim_set_keymap('', '<leader>o', ':lua ToggleLineLength()<CR>', {noremap = true, silent = true})
+vim.keymap.set('', '<leader>o', ':lua ToggleLineLength()<CR>', {silent = true})
 
 --toggle "paste" setting to maintain spacing
-vim.api.nvim_set_keymap('', '<leader>p', ':set invpaste paste?<CR>', {noremap = true, silent = true})
+vim.keymap.set('', '<leader>p', ':set invpaste paste?<CR>', {silent = true})
 
 
 --set ripgrep to be used by :grep
-vim.cmd([[
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-    command! -nargs=+ Rg execute 'silent grep! <args>' | copen
-    map <leader>s ;Rg 
-endif
-]])
+if vim.fn.executable("rg") then
+    vim.o.grepprg="rg --vimgrep --no-heading"
+    vim.o.grepformat="%f:%l:%c:%m,%f:%l:%m"
+    vim.cmd([[command! -nargs=+ Rg execute 'silent grep! <args>' | copen]])
+    vim.keymap.set('', '<leader>s', ';Rg')
+end
 
 vim.cmd('let $BASH_ENV = "~/.aliases"')

@@ -29,3 +29,15 @@ autocmd('BufWritePost', {group='linting', pattern='*.rs', command=make_cmd})
 autocmd('FileType', {group='linting', pattern='lua', command='setlocal makeprg="luac -p % | setlocal errorformat=%m"'})
 autocmd('BufWritePost', {group='linting', pattern='*.lua', command=make_cmd})
 autocmd('QuickFixCmdPost', {group='linting', pattern='[^l]*', command='cwindow'})
+
+
+--Large File Handling
+vim.cmd([[
+if !exists("my_auto_commands_loaded")
+    let my_auto_commands_loaded = 1
+    let g:LargeFile = 1024 * 1024 * 10
+    augroup LargeFile
+        autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+    augroup END
+endif
+]])
