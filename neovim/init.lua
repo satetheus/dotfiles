@@ -12,7 +12,7 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 --disable mouse
-vim.cmd([[set mouse=]])
+vim.opt.mouse=""
 
 --tab settings
 set.tabstop = 8
@@ -74,9 +74,6 @@ vim.keymap.set('c', 'wc', 'w !clip.exe')
 --reload init.lua
 vim.keymap.set('', '<leader>r', '<cmd>source ~/.config/nvim/init.lua<CR>')
 
----gmk auth tool
-vim.keymap.set('', '<leader>a', ':vnew\:r !gac ')
-
 --toggle overlength highlight
 vim.keymap.set('', '<leader>o', ':lua ToggleLineLength()<CR>', {silent = true})
 
@@ -85,13 +82,11 @@ vim.keymap.set('', '<leader>p', ':set invpaste paste?<CR>', {silent = true})
 
 
 --set ripgrep to be used by :grep
-vim.cmd([[
-if executable("rg")
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-    command! -nargs=+ Rg execute 'silent grep! <args>' | copen
-    map <leader>s ;Rg 
-endif
-]])
+if vim.fn.executable("rg") then
+    vim.o.grepprg="rg --vimgrep --no-heading"
+    vim.o.grepformat="%f:%l:%c:%m,%f:%l:%m"
+    vim.cmd([[command! -nargs=+ Rg execute 'silent grep! <args>' | copen]])
+    vim.keymap.set('', '<leader>s', ';Rg')
+end
 
 vim.cmd('let $BASH_ENV = "~/.aliases"')

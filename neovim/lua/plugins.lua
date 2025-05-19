@@ -20,7 +20,5 @@ vim.g.UltiSnipsExpandTrigger = "<tab>"
 vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
 vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
 vim.g.UltiSnipsEditSplit = "vertical"
-vim.cmd [[
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
-]]
+vim.g.UltiSnipsSnippetDirectories={vim.fn.expand("~/.config/nvim/UltiSnips")}
 vim.keymap.set('c', 'snip', 'UltiSnipsEdit')
