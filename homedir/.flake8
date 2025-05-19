@@ -1,9 +1,0 @@
-[flake8]
-ignore = F401, F811
-exclude = 
-    .tox,
-    .git,
-    __pycache__,
-    documentation,
-    venv
-max-line-length = 90
