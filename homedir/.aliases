@@ -115,6 +115,11 @@ function g2ssh() {
     git remote set-url $names $newurl
 }
 
+# mkdir + cd
+function mkcd() {
+    mkdir "${1}" && cd "${1}"
+}
+
 #
 function preqs () {
     grep -i -r --no-filename --include \*.py 'import ' . | \
