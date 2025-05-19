@@ -58,7 +58,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 shopt -s expand_aliases
 
 # Alias definitions.
-[ -f ~/.aliases ] && source "~/.aliases"
+[ -f "$HOME/.aliases" ] && source "$HOME/.aliases"
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -113,13 +113,13 @@ PATH="$PATH:~/.local/share/bob/nvim-bin"
 
 
 # source for rust if exists
-[ -f "~/.cargo/env" ] && source "~/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # activate mise if exists
-[ -f "~/.cargo/bin/mise" ] && eval "$(~/.cargo/bin/mise activate bash)"
+[ -f "$HOME/.cargo/bin/mise" ] && eval "$($HOME/.cargo/bin/mise activate bash)"
 
 # sources bash fzf files if exists. Important for linux systems
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f "$HOME/.fzf.bash" ] && source "$HOME/.fzf.bash"
 
 # sets up proper configuration for fzf on nixos, DO NOT REMOVE
 if command -v fzf-share >/dev/null; then
@@ -128,18 +128,15 @@ if command -v fzf-share >/dev/null; then
 fi
 
 # add local variables from another file, if exists
-[ -f "~/.local_vars" ] && source "~/.local_vars"
+[ -f "$HOME/.local_vars" ] && source "$HOME/.local_vars"
 
+export FZF_DEFAULT_COMMAND="rg --files --follow $HOME $PROJECT_DIR"
 # set fzf to use fd
 if ! command -v fdfind > /dev/null; then
-    export FZF_DEFAULT_COMMAND="fd . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
-
     # set alt-c to search all directories
-    export FZF_ALT_C_COMMAND="fd . $HOME $PROJECT_DIR --type d -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+    export FZF_ALT_C_COMMAND="fd . $HOME $PROJECT_DIR --type d"
 else
-    export FZF_DEFAULT_COMMAND="fdfind . $HOME $PROJECT_DIR -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
-
     # set alt-c to search all directories
-    export FZF_ALT_C_COMMAND="fdfind . $HOME $PROJECT_DIR --type d -E '*node_modules*' -E '*vimwiki*' -E '*spark-3.2.1-bin-hadoop3.2*' -E '*aws-glue-libs*'"
+    export FZF_ALT_C_COMMAND="fdfind . $HOME $PROJECT_DIR --type d"
 fi
 
